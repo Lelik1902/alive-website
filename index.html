@@ -427,7 +427,7 @@
     -webkit-background-clip:text;background-clip:text;color:transparent;
   }
   .results-label{color:var(--text-1);font-size:0.98rem;max-width:360px;}
-  .results-gallery{position:relative;display:grid;grid-template-columns:1.3fr 1fr;gap:16px;align-items:start;}
+  .results-gallery{position:relative;display:grid;grid-template-columns:1.1fr 1fr;gap:16px;}
   .dash-frame{
     position:relative;border-radius:12px;overflow:hidden;
     border:1px solid var(--line);background:#100b16;
@@ -456,6 +456,22 @@
     100%{box-shadow:0 0 0 0 rgba(255,95,87,0);}
   }
   .results-caption{position:relative;margin-top:16px;color:var(--text-1);font-size:0.85rem;}
+  .insight-panel{
+    padding:22px;border-radius:12px;
+    border:1px solid var(--line);background:linear-gradient(165deg, var(--bg-2), var(--bg-1));
+    display:flex;flex-direction:column;justify-content:center;gap:16px;
+  }
+  .insight-title{font-family:'Unbounded',sans-serif;font-size:1.02rem;font-weight:700;color:var(--text-0);}
+  .insight-list{display:flex;flex-direction:column;gap:14px;}
+  .insight-list li{display:flex;gap:12px;align-items:flex-start;}
+  .insight-icon{
+    flex-shrink:0;width:34px;height:34px;border-radius:9px;
+    background:rgba(196,140,184,.14);border:1px solid rgba(196,140,184,.3);
+    display:flex;align-items:center;justify-content:center;color:var(--magenta);
+  }
+  .insight-icon svg{width:17px;height:17px;}
+  .insight-list strong{display:block;font-size:0.92rem;font-weight:600;color:var(--text-0);margin-bottom:3px;}
+  .insight-list p{font-size:0.84rem;color:var(--text-1);line-height:1.5;}
 
   /* CASES */
   .cases-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;max-width:none;}
@@ -792,10 +808,31 @@
             <img src="assets/dashboard-1.jpg" alt="Статистика ефіру зсередини команди" loading="lazy">
             <span class="dash-chip is-live"><span class="live-dot"></span><span data-i18n="dash_chip_live">наживо просто зараз</span></span>
           </div>
-          <div class="dash-frame">
-            <div class="dash-frame-bar"><span></span><span></span><span></span></div>
-            <img src="assets/dashboard-2.jpg" alt="Джерела трафіку та подарунки за ефір" loading="lazy">
-            <span class="dash-chip" data-i18n="dash_chip_ctr">17,3% CTR за ефір</span>
+          <div class="insight-panel">
+            <h3 class="insight-title" data-i18n="insight_title">Бачимо кожну деталь ефіру</h3>
+            <ul class="insight-list">
+              <li>
+                <span class="insight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.6" fill="currentColor"/></svg></span>
+                <div>
+                  <strong data-i18n="insight_1_title">Об’єктивність замість «здається»</strong>
+                  <p data-i18n="insight_1_text">Ментор бачить глибоку статистику твоїх ефірів і щотижня аналізує дані разом із тобою.</p>
+                </div>
+              </li>
+              <li>
+                <span class="insight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></span>
+                <div>
+                  <strong data-i18n="insight_2_title">Аналіз аудиторії</strong>
+                  <p data-i18n="insight_2_text">Розбираємо, на яких моментах ти утримуєш глядачів, а на яких — втрачаєш.</p>
+                </div>
+              </li>
+              <li>
+                <span class="insight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></span>
+                <div>
+                  <strong data-i18n="insight_3_title">Конструктивний фідбек</strong>
+                  <p data-i18n="insight_3_text">Рекомендації на основі реальних цифр — і постійне покращення результату ефір за ефіром.</p>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
         <p class="results-caption" data-i18n="results_caption">Реальна статистика одного з ефірів усередині команди ALive.</p>
@@ -821,6 +858,7 @@
           <div class="case-body">
             <h3 class="case-name" data-i18n="case_name_1">Рутенія</h3>
             <div class="case-stats">
+              <span class="case-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="case_followers_1">10,1K підписників</span></span>
               <span class="case-stat is-earn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg><span data-i18n="case_tag_1">$5000+/міс</span></span>
             </div>
             <p class="case-detail" data-i18n="case_desc_1">Ще у квітні ми знайшли один одного на сайті пошуку роботи. 👀 Вона шукала вакансію баристи, а ми — дівчат, у яких горять очі пробувати щось нове.<br><br>Вже у травні її результат — $5000+ 💸 Це про ефіри, стабільність і підтримку команди поруч. 🤍</p>
@@ -834,6 +872,7 @@
           <div class="case-body">
             <h3 class="case-name" data-i18n="case_name_2">Ліза</h3>
             <div class="case-stats">
+              <span class="case-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="case_followers_2">1,7K підписників</span></span>
               <span class="case-stat is-earn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg><span data-i18n="case_tag_2">$1500/міс</span></span>
             </div>
             <p class="case-detail" data-i18n="case_desc_2">Ліза почала стримити близько місяця тому. 📈 Перший гарний результат прийшов буквально за перший тиждень.<br><br>Завжди слухає свого ментора й виконує всі рекомендації — і це видно за результатом: $1500 заробітку вже в перший місяць.</p>
@@ -847,6 +886,7 @@
           <div class="case-body">
             <h3 class="case-name" data-i18n="case_name_3">Віка</h3>
             <div class="case-stats">
+              <span class="case-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="case_followers_3">1,5K підписників</span></span>
               <span class="case-stat is-earn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg><span data-i18n="case_tag_3">$2000/міс</span></span>
             </div>
             <p class="case-detail" data-i18n="case_desc_3">Віка з Ірландії — одразу яскраво включилась у процес: дуже позитивна і по-справжньому любить стримити. 🌟<br><br>Ефіри змінили її життя: за перший місяць заробила $2000, а зараз активно веде ефіри й постійно покращує їх якість разом із нами.</p>
@@ -1171,7 +1211,13 @@
       results_label: "середній заробіток учасниць команди на місяць",
       results_note: "без прикрас 🤍",
       dash_chip_live: "наживо просто зараз",
-      dash_chip_ctr: "17,3% CTR за ефір",
+      insight_title: "Бачимо кожну деталь ефіру",
+      insight_1_title: "Об’єктивність замість «здається»",
+      insight_1_text: "Ментор бачить глибоку статистику твоїх ефірів і щотижня аналізує дані разом із тобою.",
+      insight_2_title: "Аналіз аудиторії",
+      insight_2_text: "Розбираємо, на яких моментах ти утримуєш глядачів, а на яких — втрачаєш.",
+      insight_3_title: "Конструктивний фідбек",
+      insight_3_text: "Рекомендації на основі реальних цифр — і постійне покращення результату ефір за ефіром.",
       results_caption: "Реальна статистика одного з ефірів усередині команди ALive.",
       cases_eyebrow: "КЕЙСИ",
       cases_title: "Приклади шляху всередині <span class=\"grad-text\">ALive</span>",
@@ -1179,12 +1225,15 @@
       cases_note: "Більше, ніж робота ♡",
       case_profile_btn: "Відкрити профіль",
       case_tag_1: "$5000+/міс",
+      case_followers_1: "10,1K підписників",
       case_name_1: "Рутенія",
       case_desc_1: "Ще у квітні ми знайшли один одного на сайті пошуку роботи. 👀 Вона шукала вакансію баристи, а ми — дівчат, у яких горять очі пробувати щось нове.<br><br>Вже у травні її результат — $5000+ 💸 Це про ефіри, стабільність і підтримку команди поруч. 🤍",
       case_tag_2: "$1500/міс",
+      case_followers_2: "1,7K підписників",
       case_name_2: "Ліза",
       case_desc_2: "Ліза почала стримити близько місяця тому. 📈 Перший гарний результат прийшов буквально за перший тиждень.<br><br>Завжди слухає свого ментора й виконує всі рекомендації — і це видно за результатом: $1500 заробітку вже в перший місяць.",
       case_tag_3: "$2000/міс",
+      case_followers_3: "1,5K підписників",
       case_name_3: "Віка",
       case_desc_3: "Віка з Ірландії — одразу яскраво включилась у процес: дуже позитивна і по-справжньому любить стримити. 🌟<br><br>Ефіри змінили її життя: за перший місяць заробила $2000, а зараз активно веде ефіри й постійно покращує їх якість разом із нами.",
       faq_eyebrow: "FAQ",
@@ -1288,7 +1337,13 @@
       results_label: "average monthly earnings of a team member",
       results_note: "no filters 🤍",
       dash_chip_live: "live right now",
-      dash_chip_ctr: "17.3% CTR per stream",
+      insight_title: "We see every detail of the stream",
+      insight_1_title: "Objectivity instead of \"it feels like\"",
+      insight_1_text: "Your mentor sees deep stream analytics and reviews the data with you every week.",
+      insight_2_title: "Audience analysis",
+      insight_2_text: "We break down exactly where you keep viewers engaged — and where you lose them.",
+      insight_3_title: "Constructive feedback",
+      insight_3_text: "Recommendations based on real numbers — and steady improvement, stream after stream.",
       results_caption: "Real stats from one of the streams inside the ALive team.",
       cases_eyebrow: "CASES",
       cases_title: "Examples of the journey inside <span class=\"grad-text\">ALive</span>",
@@ -1296,12 +1351,15 @@
       cases_note: "More than just a job ♡",
       case_profile_btn: "Open profile",
       case_tag_1: "$5000+/mo",
+      case_followers_1: "10.1K followers",
       case_name_1: "Ruteniia",
       case_desc_1: "We found each other back in April on a job-search site. 👀 She was looking for a barista job, and we were looking for girls with fire in their eyes, ready to try something new.<br><br>By May, her result — $5000+ 💸 It's about streams, consistency, and the support of a team right beside you. 🤍",
       case_tag_2: "$1500/mo",
+      case_followers_2: "1.7K followers",
       case_name_2: "Liza",
       case_desc_2: "Liza started streaming about a month ago. 📈 Her first solid result came within the very first week.<br><br>She always listens to her mentor and follows every recommendation — and it shows: $1500 earned in her very first month.",
       case_tag_3: "$2000/mo",
+      case_followers_3: "1.5K followers",
       case_name_3: "Vika",
       case_desc_3: "Vika, from Ireland, jumped in right away — bright, positive, and genuinely loves streaming. 🌟<br><br>Streaming changed her life: she earned $2000 in her first month, and now she streams regularly, constantly improving with our support.",
       faq_eyebrow: "FAQ",
