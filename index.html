@@ -419,7 +419,6 @@
   }
   .case-body h3{font-size:1.02rem;font-weight:600;margin-bottom:6px;}
   .case-body p{color:var(--text-1);font-size:0.92rem;}
-  .case-note{margin-top:24px;color:var(--text-1);font-size:0.85rem;}
 
   /* FAQ */
   .faq-list{display:flex;flex-direction:column;gap:12px;}
@@ -705,35 +704,34 @@
       <div class="section-head reveal">
         <p class="eyebrow"><span class="dot"></span><span data-i18n="cases_eyebrow">КЕЙСИ</span></p>
         <h2 data-i18n="cases_title">Приклади шляху всередині ALive</h2>
-        <p data-i18n="cases_intro">Три формати, які виросли з нуля разом із командою. Імена та деталі — додаються під реальні кейси.</p>
+        <p data-i18n="cases_intro">Реальні результати дівчат усередині команди ALive.</p>
       </div>
       <div class="cases-grid">
         <div class="case-card">
-          <div class="case-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="3"/><path d="M21 8.5v7L17 13v-2l4-2.5Z"/></svg></div>
+          <div class="case-thumb" id="caseThumb1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="3"/><path d="M21 8.5v7L17 13v-2l4-2.5Z"/></svg></div>
           <div class="case-body">
-            <span class="case-tag" data-i18n="case_tag_1">[ніша: батли]</span>
-            <h3 data-i18n="case_name">[Ім’я / нік]</h3>
-            <p data-i18n="case_desc">[Короткий опис шляху: з чого стартувала і якого результату досягла]</p>
+            <span class="case-tag" data-i18n="case_tag_1">$5000+/міс</span>
+            <h3 data-i18n="case_name_1">Рутенія</h3>
+            <p data-i18n="case_desc_1">Ще у квітні ми знайшли одна одну на сайті пошуку роботи. 👀 Вона шукала вакансію баристи, а ми — дівчат, у яких горять очі пробувати щось нове.<br><br>Вже у травні її результат — $5000+ 💸<br><br>Це не про «легкі гроші» чи випадковість. Це про ефіри, стабільність, особистий розвиток, роботу над помилками, емоції, спілкування з аудиторією та підтримку команди поруч. 🤍</p>
           </div>
         </div>
         <div class="case-card">
           <div class="case-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16v12H8l-4 4Z"/></svg></div>
           <div class="case-body">
-            <span class="case-tag" data-i18n="case_tag_2">[ніша: розмовний формат]</span>
-            <h3 data-i18n="case_name">[Ім’я / нік]</h3>
-            <p data-i18n="case_desc">[Короткий опис шляху: з чого стартувала і якого результату досягла]</p>
+            <span class="case-tag" data-i18n="case_tag_2">$1500/міс</span>
+            <h3 data-i18n="case_name_2">Ліза</h3>
+            <p data-i18n="case_desc_2">Ліза почала стримити близько місяця тому. 📈 Перший гарний результат прийшов буквально за перший тиждень.<br><br>Завжди слухає свого ментора й виконує всі рекомендації — і це видно за результатом: $1500 заробітку вже в перший місяць.</p>
           </div>
         </div>
         <div class="case-card">
-          <div class="case-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l2.6 5.9L21 9.6l-4.5 4.2L17.6 21 12 17.6 6.4 21l1.1-7.2L3 9.6l6.4-.7L12 3Z"/></svg></div>
+          <div class="case-thumb" id="caseThumb3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l2.6 5.9L21 9.6l-4.5 4.2L17.6 21 12 17.6 6.4 21l1.1-7.2L3 9.6l6.4-.7L12 3Z"/></svg></div>
           <div class="case-body">
-            <span class="case-tag" data-i18n="case_tag_3">[ніша: гумор / чат-шоу]</span>
-            <h3 data-i18n="case_name">[Ім’я / нік]</h3>
-            <p data-i18n="case_desc">[Короткий опис шляху: з чого стартувала і якого результату досягла]</p>
+            <span class="case-tag" data-i18n="case_tag_3">$2000/міс</span>
+            <h3 data-i18n="case_name_3">Віка</h3>
+            <p data-i18n="case_desc_3">Віка з Ірландії — одразу яскраво включилась у процес: дуже позитивна і по-справжньому любить стримити. 🌟<br><br>Ефіри змінили її життя: за перший місяць заробила $2000, а зараз активно веде ефіри й постійно покращує їх якість разом із нами.</p>
           </div>
         </div>
       </div>
-      <p class="case-note" data-i18n="case_note">Плейсхолдери — заміни на реальні імена, ніші та результати, коли будуть готові перші кейси.</p>
     </div>
   </section>
 
@@ -1057,13 +1055,16 @@
       results_caption: "Реальна статистика одного з ефірів усередині команди ALive.",
       cases_eyebrow: "КЕЙСИ",
       cases_title: "Приклади шляху всередині ALive",
-      cases_intro: "Три формати, які виросли з нуля разом із командою. Імена та деталі — додаються під реальні кейси.",
-      case_tag_1: "[ніша: батли]",
-      case_tag_2: "[ніша: розмовний формат]",
-      case_tag_3: "[ніша: гумор / чат-шоу]",
-      case_name: "[Ім’я / нік]",
-      case_desc: "[Короткий опис шляху: з чого стартувала і якого результату досягла]",
-      case_note: "Плейсхолдери — заміни на реальні імена, ніші та результати, коли будуть готові перші кейси.",
+      cases_intro: "Реальні результати дівчат усередині команди ALive.",
+      case_tag_1: "$5000+/міс",
+      case_name_1: "Рутенія",
+      case_desc_1: "Ще у квітні ми знайшли одна одну на сайті пошуку роботи. 👀 Вона шукала вакансію баристи, а ми — дівчат, у яких горять очі пробувати щось нове.<br><br>Вже у травні її результат — $5000+ 💸<br><br>Це не про «легкі гроші» чи випадковість. Це про ефіри, стабільність, особистий розвиток, роботу над помилками, емоції, спілкування з аудиторією та підтримку команди поруч. 🤍",
+      case_tag_2: "$1500/міс",
+      case_name_2: "Ліза",
+      case_desc_2: "Ліза почала стримити близько місяця тому. 📈 Перший гарний результат прийшов буквально за перший тиждень.<br><br>Завжди слухає свого ментора й виконує всі рекомендації — і це видно за результатом: $1500 заробітку вже в перший місяць.",
+      case_tag_3: "$2000/міс",
+      case_name_3: "Віка",
+      case_desc_3: "Віка з Ірландії — одразу яскраво включилась у процес: дуже позитивна і по-справжньому любить стримити. 🌟<br><br>Ефіри змінили її життя: за перший місяць заробила $2000, а зараз активно веде ефіри й постійно покращує їх якість разом із нами.",
       faq_eyebrow: "FAQ",
       faq_title: "Запитання перед першим повідомленням",
       faq_intro: "Якщо твого запитання тут немає, напиши напряму в Telegram.",
@@ -1162,13 +1163,16 @@
       results_caption: "Real stats from one of the streams inside the ALive team.",
       cases_eyebrow: "CASES",
       cases_title: "Examples of the journey inside ALive",
-      cases_intro: "Three formats that grew from zero together with the team. Names and details will be added once real cases are ready.",
-      case_tag_1: "[niche: battles]",
-      case_tag_2: "[niche: talk format]",
-      case_tag_3: "[niche: comedy / chat show]",
-      case_name: "[Name / handle]",
-      case_desc: "[Short description of the journey: where she started and what result she achieved]",
-      case_note: "Placeholders — replace with real names, niches, and results once the first cases are ready.",
+      cases_intro: "Real results from girls inside the ALive team.",
+      case_tag_1: "$5000+/mo",
+      case_name_1: "Ruteniia",
+      case_desc_1: "We found each other back in April on a job-search site. 👀 She was looking for a barista job, and we were looking for girls with fire in their eyes, ready to try something new.<br><br>By May, her result — $5000+ 💸<br><br>This isn't about \"easy money\" or luck. It's about streams, consistency, personal growth, fixing mistakes, emotions, connecting with an audience, and the support of a team right beside you. 🤍",
+      case_tag_2: "$1500/mo",
+      case_name_2: "Liza",
+      case_desc_2: "Liza started streaming about a month ago. 📈 Her first solid result came within the very first week.<br><br>She always listens to her mentor and follows every recommendation — and it shows: $1500 earned in her very first month.",
+      case_tag_3: "$2000/mo",
+      case_name_3: "Vika",
+      case_desc_3: "Vika, from Ireland, jumped in right away — bright, positive, and genuinely loves streaming. 🌟<br><br>Streaming changed her life: she earned $2000 in her first month, and now she streams regularly, constantly improving with our support.",
       faq_eyebrow: "FAQ",
       faq_title: "Questions before your first message",
       faq_intro: "If your question isn't here, message us directly on Telegram.",
