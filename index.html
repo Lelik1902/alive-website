@@ -213,6 +213,7 @@
     50%{transform:translateY(-10px);}
   }
   .phone-card{position:relative;width:260px;aspect-ratio:9/18.5;}
+  .phone-sticker{position:absolute;top:-16px;left:-22px;z-index:5;font-size:1.15rem;}
   .phone{
     position:absolute;top:0;left:0;right:0;bottom:0;
     border-radius:38px;border:1px solid rgba(255,255,255,0.12);
@@ -283,6 +284,24 @@
   .grad-text{
     background:linear-gradient(95deg,var(--cyan),var(--magenta));
     -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  /* small hand-drawn accents sprinkled around the page */
+  .hand-note{
+    font-family:'Caveat',cursive;font-weight:700;font-size:1.5rem;
+    color:var(--magenta);display:inline-flex;align-items:center;gap:6px;
+    transform:rotate(-3deg);
+  }
+  .hand-note svg{width:18px;height:18px;flex-shrink:0;}
+  .hand-note.tilt-right{transform:rotate(2.5deg);}
+  .hand-note.on-cyan{color:var(--cyan);}
+  .sticker-tag{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:8px 16px;border-radius:10px 10px 10px 2px;
+    background:linear-gradient(135deg,var(--magenta),var(--violet));
+    color:#fff;font-family:'Caveat',cursive;font-weight:700;font-size:1.2rem;
+    box-shadow:0 14px 30px -12px rgba(196,140,184,.7);
+    transform:rotate(-7deg);
+    white-space:nowrap;
   }
   .section-head{max-width:640px;margin-bottom:40px;}
   .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
@@ -371,10 +390,11 @@
   }
   .fit-note strong{color:var(--text-0);}
   .journey-photo{
-    border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);
+    position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);
     margin-bottom:20px;aspect-ratio:4/3;
   }
   .journey-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;}
+  .journey-photo .sticker-tag{position:absolute;bottom:14px;left:14px;z-index:2;}
 
   /* COMMUNITY cards */
   .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
@@ -440,12 +460,8 @@
   /* CASES */
   .cases-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;max-width:none;}
   .cases-head-text{max-width:640px;}
-  .cases-note{
-    font-family:'Caveat',cursive;font-weight:700;font-size:1.65rem;
-    color:var(--magenta);transform:rotate(-3deg);white-space:nowrap;
-    display:flex;align-items:center;gap:6px;margin-top:6px;
-  }
-  .cases-note svg{width:20px;height:20px;flex-shrink:0;}
+  .cases-note{font-size:1.65rem;white-space:nowrap;margin-top:6px;}
+  .cases-note svg{width:20px;height:20px;}
   .cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
   .case-card{
     position:relative;display:flex;flex-direction:column;width:100%;
@@ -689,7 +705,7 @@
         <span class="eyebrow"><span class="dot"></span>ALIVE / TIKTOK LIVE</span>
         <h1>
           <span class="hero-line" data-i18n="hero_title_1">Виходь у <span class="grad">TikTok Live</span>.</span>
-          <span class="hero-line" data-i18n="hero_title_2">Рости не сама.</span>
+          <span class="hero-line" data-i18n="hero_title_2">Зростай не сама.</span>
         </h1>
         <p class="lead" data-i18n="hero_lead">ALive допомагає підготувати профіль, освоїти механіку ефірів і розвиватися разом з особистим ментором та командою. Можна почати з нуля — головне, бути готовою діяти регулярно.</p>
         <div class="hero-actions">
@@ -704,6 +720,7 @@
       <div class="phone-wrap">
         <div class="phone-tilt">
           <div class="phone-card">
+            <span class="sticker-tag phone-sticker" aria-hidden="true" data-i18n="hero_sticker">твоя черга ✨</span>
             <div class="phone" role="img" aria-label="Фрагмент ефіру у вертикальному форматі">
               <div class="phone-screen">
                 <video class="phone-video" autoplay loop muted playsinline preload="metadata" poster="assets/phone-poster.webp">
@@ -736,6 +753,7 @@
         <p class="eyebrow"><span class="dot"></span><span data-i18n="about_eyebrow">ПРО НАС</span></p>
         <h2 data-i18n="about_title">Команда поруч, поки ти знаходиш свою <span class="text-chrome">подачу.</span></h2>
         <p class="manifesto-lead" data-i18n="about_copy">ALive поєднує практику, зворотний зв’язок і живе оточення. Тут не потрібно спочатку ставати ідеальною — основу збирають разом із тобою, а кожен наступний ефір стає матеріалом для розвитку.</p>
+        <p class="hand-note" style="margin-top:18px;"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c.9 3.6 2.1 4.8 5.7 5.7-3.6.9-4.8 2.1-5.7 5.7-.9-3.6-2.1-4.8-5.7-5.7C9.9 6.8 11.1 5.6 12 2Z"/></svg><span data-i18n="about_note">без ідеального старту ✨</span></p>
       </div>
       <div class="about-visual reveal" aria-hidden="true">
         <span class="path-glow"></span>
@@ -766,6 +784,7 @@
         <div class="results-stat">
           <span class="results-value">$2000</span>
           <span class="results-label" data-i18n="results_label">середній заробіток учасниць команди на місяць</span>
+          <span class="hand-note tilt-right" style="margin-left:auto;"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c.9 3.6 2.1 4.8 5.7 5.7-3.6.9-4.8 2.1-5.7 5.7-.9-3.6-2.1-4.8-5.7-5.7C9.9 6.8 11.1 5.6 12 2Z"/></svg><span data-i18n="results_note">без прикрас 🤍</span></span>
         </div>
         <div class="results-gallery">
           <div class="dash-frame">
@@ -792,7 +811,7 @@
           <h2 data-i18n="cases_title">Приклади шляху всередині ALive</h2>
           <p data-i18n="cases_intro">Реальні результати дівчат усередині команди ALive.</p>
         </div>
-        <p class="cases-note"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c.9 3.6 2.1 4.8 5.7 5.7-3.6.9-4.8 2.1-5.7 5.7-.9-3.6-2.1-4.8-5.7-5.7C9.9 6.8 11.1 5.6 12 2Z"/><path d="M19 14c.4 1.6.9 2.1 2.5 2.5-1.6.4-2.1.9-2.5 2.5-.4-1.6-.9-2.1-2.5-2.5 1.6-.4 2.1-.9 2.5-2.5Z"/></svg><span data-i18n="cases_note">Більше, ніж робота ♡</span></p>
+        <p class="hand-note cases-note"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c.9 3.6 2.1 4.8 5.7 5.7-3.6.9-4.8 2.1-5.7 5.7-.9-3.6-2.1-4.8-5.7-5.7C9.9 6.8 11.1 5.6 12 2Z"/><path d="M19 14c.4 1.6.9 2.1 2.5 2.5-1.6.4-2.1.9-2.5 2.5-.4-1.6-.9-2.1-2.5-2.5 1.6-.4 2.1-.9 2.5-2.5Z"/></svg><span data-i18n="cases_note">Більше, ніж робота ♡</span></p>
       </div>
       <div class="cases-grid">
         <div class="case-card" id="caseCard1">
@@ -854,6 +873,7 @@
         <div>
           <div class="journey-photo">
             <img src="assets/setup-photo.jpg" alt="Підготовка до ефіру" loading="lazy">
+            <span class="sticker-tag" aria-hidden="true" data-i18n="journey_sticker">з такого і починають 🤍</span>
           </div>
           <h3 style="font-size:1.1rem;font-weight:600;margin-bottom:8px;" data-i18n="journey_title">Від першого повідомлення — до першого впевненого ефіру</h3>
           <p style="color:var(--text-1);font-size:0.95rem;" data-i18n="journey_subtitle">П’ять кроків, які проходить кожна дівчина в команді.</p>
@@ -897,6 +917,7 @@
         <p class="eyebrow"><span class="dot"></span><span data-i18n="community_eyebrow">НЕ САМА В ЕФІРІ</span></p>
         <h2 data-i18n="community_title">Підтримка продовжується після кнопки «завершити live»</h2>
         <p data-i18n="community_intro">Після ефіру залишаються запитання, сумніви та ідеї. В ALive їх не потрібно розбирати наодинці: поруч ментор і учасниці, які знають цей формат зсередини.</p>
+        <p class="hand-note" style="margin-top:16px;"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c.9 3.6 2.1 4.8 5.7 5.7-3.6.9-4.8 2.1-5.7 5.7-.9-3.6-2.1-4.8-5.7-5.7C9.9 6.8 11.1 5.6 12 2Z"/></svg><span data-i18n="community_note">ти більше не сама тут 💫</span></p>
       </div>
       <div class="cards-grid">
         <div class="note-card reveal">
@@ -1021,6 +1042,7 @@
               <p style="font-size:0.82rem;" data-i18n="footer_tagline">Команда для дівчат у TikTok Live</p>
             </div>
           </div>
+          <p class="hand-note on-cyan" style="margin-top:14px;font-size:1.3rem;"><span data-i18n="footer_note">зроблено з любов’ю 🤍</span></p>
         </div>
         <nav class="footer-nav" aria-label="Навігація в підвалі">
           <a href="#about" data-i18n="nav_about">Про нас</a>
@@ -1098,10 +1120,11 @@
       telegram_write: "Написати в Telegram",
       cta_connect: "Зв’язатися",
       hero_title_1: 'Виходь у <span class="grad">TikTok Live</span>.',
-      hero_title_2: "Рости не сама.",
+      hero_title_2: "Зростай не сама.",
       hero_lead: "ALive допомагає підготувати профіль, освоїти механіку ефірів і розвиватися разом з особистим ментором та командою. Можна почати з нуля — головне, бути готовою діяти регулярно.",
       hero_cta: "Почати розмову",
       hero_secondary: "Подивитися, як усе влаштовано",
+      hero_sticker: "твоя черга ✨",
       marquee_profile: "профіль",
       marquee_live: "ефір",
       marquee_delivery: "подача",
@@ -1109,6 +1132,7 @@
       about_eyebrow: "ПРО НАС",
       about_title: 'Команда поруч, поки ти знаходиш свою <span class="text-chrome">подачу.</span>',
       about_copy: "ALive поєднує практику, зворотний зв’язок і живе оточення. Тут не потрібно спочатку ставати ідеальною — основу збирають разом із тобою, а кожен наступний ефір стає матеріалом для розвитку.",
+      about_note: "без ідеального старту ✨",
       path_start: "Старт",
       path_finish: "Регулярні ефіри",
       path_l1: "Профіль",
@@ -1117,6 +1141,7 @@
       journey_eyebrow: "ЯК ПОЧАТИ",
       journey_title: "Від першого повідомлення — до першого впевненого ефіру",
       journey_subtitle: "П’ять кроків, які проходить кожна дівчина в команді.",
+      journey_sticker: "з такого і починають 🤍",
       journey_1_title: "Ти пишеш нам",
       journey_1_text: 'Відкриваєш Telegram, пишеш <a href="https://t.me/hr_alive" target="_blank" rel="noopener noreferrer">@hr_alive</a> і коротко розповідаєш про себе. Якщо TikTok-профіль уже є — можеш одразу надіслати посилання.',
       journey_2_title: "Знайомимося",
@@ -1137,6 +1162,7 @@
       community_eyebrow: "НЕ САМА В ЕФІРІ",
       community_title: "Підтримка продовжується після кнопки «завершити live»",
       community_intro: "Після ефіру залишаються запитання, сумніви та ідеї. В ALive їх не потрібно розбирати наодинці: поруч ментор і учасниці, які знають цей формат зсередини.",
+      community_note: "ти більше не сама тут 💫",
       community_1_title: "Можна запитати",
       community_1_text: "Простір для запитань і складних ситуацій.",
       community_2_title: "Можна розібрати",
@@ -1144,6 +1170,7 @@
       community_3_title: "Можна побачити інакше",
       community_3_text: "Обмін підходами та досвідом усередині команди.",
       results_label: "середній заробіток учасниць команди на місяць",
+      results_note: "без прикрас 🤍",
       dash_chip_live: "наживо просто зараз",
       dash_chip_ctr: "17,3% CTR за ефір",
       results_caption: "Реальна статистика одного з ефірів усередині команди ALive.",
@@ -1197,6 +1224,7 @@
       form_success_title: "Дякуємо! Заявку надіслано.",
       form_success_text: "Ми зв’яжемось з тобою в Telegram найближчим часом.",
       footer_tagline: "Команда для дівчат у TikTok Live",
+      footer_note: "зроблено з любов’ю 🤍",
       footer_start: "Почати розмову",
       footer_rights: "© 2026 ALive. Усі права захищені."
     },
@@ -1214,6 +1242,7 @@
       hero_lead: "ALive helps you set up your profile, learn the mechanics of going live, and grow together with a personal mentor and team. You can start from zero — what matters is being ready to show up regularly.",
       hero_cta: "Start a conversation",
       hero_secondary: "See how it works",
+      hero_sticker: "your turn ✨",
       marquee_profile: "profile",
       marquee_live: "live",
       marquee_delivery: "delivery",
@@ -1221,6 +1250,7 @@
       about_eyebrow: "ABOUT",
       about_title: 'The team is with you as you find your <span class="text-chrome">delivery.</span>',
       about_copy: "ALive combines practice, feedback, and a real community. You don't need to be perfect from day one — the foundation is built together with you, and every next stream becomes material for growth.",
+      about_note: "no perfect start required ✨",
       path_start: "Start",
       path_finish: "Regular streams",
       path_l1: "Profile",
@@ -1229,6 +1259,7 @@
       journey_eyebrow: "HOW TO START",
       journey_title: "From your first message to your first confident stream",
       journey_subtitle: "Five steps every girl on the team goes through.",
+      journey_sticker: "everyone starts here 🤍",
       journey_1_title: "You message us",
       journey_1_text: 'Open Telegram, message <a href="https://t.me/hr_alive" target="_blank" rel="noopener noreferrer">@hr_alive</a> and briefly tell us about yourself. If you already have a TikTok profile, feel free to send the link right away.',
       journey_2_title: "We get to know each other",
@@ -1249,6 +1280,7 @@
       community_eyebrow: "NOT ALONE ON STREAM",
       community_title: "Support continues after you tap “end live”",
       community_intro: "Questions, doubts, and ideas remain after the stream. At ALive you don't have to work through them alone: your mentor and other members who know this format from the inside are right there.",
+      community_note: "you're not alone here anymore 💫",
       community_1_title: "You can ask",
       community_1_text: "A space for questions and tricky situations.",
       community_2_title: "You can review",
@@ -1256,6 +1288,7 @@
       community_3_title: "You can see it differently",
       community_3_text: "Exchanging approaches and experience within the team.",
       results_label: "average monthly earnings of a team member",
+      results_note: "no filters 🤍",
       dash_chip_live: "live right now",
       dash_chip_ctr: "17.3% CTR per stream",
       results_caption: "Real stats from one of the streams inside the ALive team.",
@@ -1309,6 +1342,7 @@
       form_success_title: "Thank you! Request sent.",
       form_success_text: "We'll reach out to you on Telegram soon.",
       footer_tagline: "A team for girls on TikTok Live",
+      footer_note: "made with love 🤍",
       footer_start: "Start a conversation",
       footer_rights: "© 2026 ALive. All rights reserved."
     }
