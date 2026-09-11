@@ -70,7 +70,7 @@
     top:0;
     z-index:100;
     width:100%;
-    padding:20px 0;
+    padding:28px 0;
     background:rgba(27,18,32,0.55);
     backdrop-filter:blur(16px);
     -webkit-backdrop-filter:blur(16px);
@@ -82,7 +82,7 @@
     background:rgba(27,18,32,0.86);
     backdrop-filter:blur(14px);
     box-shadow:0 1px 0 var(--line);
-    padding:14px 0;
+    padding:18px 0;
   }
   .nav-row{
     display:flex;
@@ -107,7 +107,7 @@
     box-shadow:0 4px 14px -4px rgba(196,140,184,.6);
   }
   .logo-word{letter-spacing:0.02em;}
-  nav ul{display:flex;gap:20px;list-style:none;}
+  nav ul{display:flex;gap:30px;list-style:none;}
   nav a{
     font-size:0.92rem;
     color:var(--text-1);
@@ -392,19 +392,50 @@
   .note-card h3{font-size:1.02rem;font-weight:600;margin-bottom:6px;}
   .note-card p{color:var(--text-1);font-size:0.92rem;}
   .results-panel{
-    margin-top:24px;padding:32px;border-radius:var(--radius);
+    padding:32px;border-radius:var(--radius);
     border:1px solid var(--line);background:var(--bg-1);
+    position:relative;overflow:hidden;
   }
-  .results-stat{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:24px;}
+  .results-panel::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse 520px 300px at 8% 0%, rgba(196,140,184,.16), transparent 60%);
+  }
+  .results-stat{position:relative;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:24px;}
   .results-value{
     font-family:'Unbounded',sans-serif;font-size:2.4rem;font-weight:800;
     background:linear-gradient(95deg,var(--cyan),var(--magenta));
     -webkit-background-clip:text;background-clip:text;color:transparent;
   }
   .results-label{color:var(--text-1);font-size:0.98rem;max-width:360px;}
-  .results-gallery{display:grid;grid-template-columns:1.3fr 1fr;gap:16px;}
-  .results-gallery img{width:100%;border-radius:12px;border:1px solid var(--line);display:block;}
-  .results-caption{margin-top:16px;color:var(--text-1);font-size:0.85rem;}
+  .results-gallery{position:relative;display:grid;grid-template-columns:1.3fr 1fr;gap:16px;align-items:start;}
+  .dash-frame{
+    position:relative;border-radius:12px;overflow:hidden;
+    border:1px solid var(--line);background:#100b16;
+    box-shadow:0 20px 44px -22px rgba(196,140,184,.45);
+  }
+  .dash-frame-bar{display:flex;align-items:center;gap:6px;padding:10px 12px;background:#17101d;}
+  .dash-frame-bar span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.16);}
+  .dash-frame-bar span:nth-child(1){background:#ff5f57;}
+  .dash-frame-bar span:nth-child(2){background:#febc2e;}
+  .dash-frame-bar span:nth-child(3){background:#28c840;}
+  .dash-frame img{width:100%;display:block;}
+  .dash-chip{
+    position:absolute;bottom:12px;left:12px;z-index:2;
+    display:inline-flex;align-items:center;gap:7px;
+    padding:6px 12px;border-radius:100px;font-size:0.74rem;font-weight:700;
+    background:rgba(15,10,18,.72);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.16);color:#fff;
+    white-space:nowrap;
+  }
+  .dash-chip .live-dot{
+    width:7px;height:7px;border-radius:50%;background:#ff5f57;flex-shrink:0;
+    animation:live-ping 1.6s ease-out infinite;
+  }
+  @keyframes live-ping{
+    0%{box-shadow:0 0 0 0 rgba(255,95,87,.6);}
+    70%{box-shadow:0 0 0 7px rgba(255,95,87,0);}
+    100%{box-shadow:0 0 0 0 rgba(255,95,87,0);}
+  }
+  .results-caption{position:relative;margin-top:16px;color:var(--text-1);font-size:0.85rem;}
 
   /* CASES */
   .cases-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;max-width:none;}
@@ -729,6 +760,30 @@
     </div>
   </section>
 
+  <section id="results">
+    <div class="container">
+      <div class="results-panel reveal">
+        <div class="results-stat">
+          <span class="results-value">$2000</span>
+          <span class="results-label" data-i18n="results_label">середній заробіток учасниць команди на місяць</span>
+        </div>
+        <div class="results-gallery">
+          <div class="dash-frame">
+            <div class="dash-frame-bar"><span></span><span></span><span></span></div>
+            <img src="assets/dashboard-1.jpg" alt="Статистика ефіру зсередини команди" loading="lazy">
+            <span class="dash-chip is-live"><span class="live-dot"></span><span data-i18n="dash_chip_live">наживо просто зараз</span></span>
+          </div>
+          <div class="dash-frame">
+            <div class="dash-frame-bar"><span></span><span></span><span></span></div>
+            <img src="assets/dashboard-2.jpg" alt="Джерела трафіку та подарунки за ефір" loading="lazy">
+            <span class="dash-chip" data-i18n="dash_chip_ctr">17,3% CTR за ефір</span>
+          </div>
+        </div>
+        <p class="results-caption" data-i18n="results_caption">Реальна статистика одного з ефірів усередині команди ALive.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="cases">
     <div class="container">
       <div class="section-head reveal cases-head">
@@ -749,7 +804,7 @@
             <div class="case-stats">
               <span class="case-stat is-earn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg><span data-i18n="case_tag_1">$5000+/міс</span></span>
             </div>
-            <p class="case-detail" data-i18n="case_desc_1">Ще у квітні ми знайшли одна одну на сайті пошуку роботи. 👀 Вона шукала вакансію баристи, а ми — дівчат, у яких горять очі пробувати щось нове.<br><br>Вже у травні її результат — $5000+ 💸 Це про ефіри, стабільність і підтримку команди поруч. 🤍</p>
+            <p class="case-detail" data-i18n="case_desc_1">Ще у квітні ми знайшли один одного на сайті пошуку роботи. 👀 Вона шукала вакансію баристи, а ми — дівчат, у яких горять очі пробувати щось нове.<br><br>Вже у травні її результат — $5000+ 💸 Це про ефіри, стабільність і підтримку команди поруч. 🤍</p>
             <a class="case-profile-btn" href="https://www.tiktok.com/@ruteniiaxo" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 3h-3.3v12.4a2.9 2.9 0 1 1-2.1-2.8v-3.3a6.2 6.2 0 1 0 5.4 6.2V9.6a7.6 7.6 0 0 0 4.3 1.3V7.6a4.3 4.3 0 0 1-4.3-4.3Z"/></svg><span data-i18n="case_profile_btn">Відкрити профіль</span></a>
           </div>
         </div>
@@ -859,17 +914,6 @@
           <h3 data-i18n="community_3_title">Можна побачити інакше</h3>
           <p data-i18n="community_3_text">Обмін підходами та досвідом усередині команди.</p>
         </div>
-      </div>
-      <div class="results-panel reveal">
-        <div class="results-stat">
-          <span class="results-value">$2000</span>
-          <span class="results-label" data-i18n="results_label">середній заробіток учасниць команди на місяць</span>
-        </div>
-        <div class="results-gallery">
-          <img src="assets/dashboard-1.png" alt="Статистика ефіру зсередини команди" loading="lazy">
-          <img src="assets/dashboard-2.png" alt="Джерела трафіку та подарунки за ефір" loading="lazy">
-        </div>
-        <p class="results-caption" data-i18n="results_caption">Реальна статистика одного з ефірів усередині команди ALive.</p>
       </div>
     </div>
   </section>
@@ -1100,6 +1144,8 @@
       community_3_title: "Можна побачити інакше",
       community_3_text: "Обмін підходами та досвідом усередині команди.",
       results_label: "середній заробіток учасниць команди на місяць",
+      dash_chip_live: "наживо просто зараз",
+      dash_chip_ctr: "17,3% CTR за ефір",
       results_caption: "Реальна статистика одного з ефірів усередині команди ALive.",
       cases_eyebrow: "КЕЙСИ",
       cases_title: "Приклади шляху всередині <span class=\"grad-text\">ALive</span>",
@@ -1108,7 +1154,7 @@
       case_profile_btn: "Відкрити профіль",
       case_tag_1: "$5000+/міс",
       case_name_1: "Рутенія",
-      case_desc_1: "Ще у квітні ми знайшли одна одну на сайті пошуку роботи. 👀 Вона шукала вакансію баристи, а ми — дівчат, у яких горять очі пробувати щось нове.<br><br>Вже у травні її результат — $5000+ 💸 Це про ефіри, стабільність і підтримку команди поруч. 🤍",
+      case_desc_1: "Ще у квітні ми знайшли один одного на сайті пошуку роботи. 👀 Вона шукала вакансію баристи, а ми — дівчат, у яких горять очі пробувати щось нове.<br><br>Вже у травні її результат — $5000+ 💸 Це про ефіри, стабільність і підтримку команди поруч. 🤍",
       case_tag_2: "$1500/міс",
       case_name_2: "Ліза",
       case_desc_2: "Ліза почала стримити близько місяця тому. 📈 Перший гарний результат прийшов буквально за перший тиждень.<br><br>Завжди слухає свого ментора й виконує всі рекомендації — і це видно за результатом: $1500 заробітку вже в перший місяць.",
@@ -1210,6 +1256,8 @@
       community_3_title: "You can see it differently",
       community_3_text: "Exchanging approaches and experience within the team.",
       results_label: "average monthly earnings of a team member",
+      dash_chip_live: "live right now",
+      dash_chip_ctr: "17.3% CTR per stream",
       results_caption: "Real stats from one of the streams inside the ALive team.",
       cases_eyebrow: "CASES",
       cases_title: "Examples of the journey inside <span class=\"grad-text\">ALive</span>",
