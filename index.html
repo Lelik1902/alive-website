@@ -280,6 +280,10 @@
 
   /* SECTION shared */
   section{padding:64px 0;}
+  .grad-text{
+    background:linear-gradient(95deg,var(--cyan),var(--magenta));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
   .section-head{max-width:640px;margin-bottom:40px;}
   .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
   .section-head h2{font-size:clamp(1.7rem,3vw,2.3rem);font-weight:700;}
@@ -1127,7 +1131,7 @@
       results_label: "середній заробіток учасниць команди на місяць",
       results_caption: "Реальна статистика одного з ефірів усередині команди ALive.",
       cases_eyebrow: "КЕЙСИ",
-      cases_title: "Приклади шляху всередині ALive",
+      cases_title: "Приклади шляху всередині <span class=\"grad-text\">ALive</span>",
       cases_intro: "Реальні результати дівчат усередині команди ALive.",
       cases_note: "Більше, ніж робота ♡",
       case_profile_btn: "Відкрити профіль",
@@ -1240,7 +1244,7 @@
       results_label: "average monthly earnings of a team member",
       results_caption: "Real stats from one of the streams inside the ALive team.",
       cases_eyebrow: "CASES",
-      cases_title: "Examples of the journey inside ALive",
+      cases_title: "Examples of the journey inside <span class=\"grad-text\">ALive</span>",
       cases_intro: "Real results from girls inside the ALive team.",
       cases_note: "More than just a job ♡",
       case_profile_btn: "Open profile",
