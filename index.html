@@ -570,12 +570,16 @@
     display:flex;flex-direction:column;gap:14px;
   }
   .form-field label{display:block;font-size:0.85rem;color:var(--text-1);margin-bottom:6px;}
-  .form-field input,.form-field textarea{
+  .form-field input,.form-field textarea,.form-field select{
     width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);
     background:var(--bg-0);color:var(--text-0);font-family:inherit;font-size:0.95rem;
     resize:vertical;transition:border-color .2s ease;
   }
-  .form-field input:focus,.form-field textarea:focus{border-color:var(--cyan);outline:none;}
+  .form-field select{appearance:none;-webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C7AEC2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;background-size:16px;padding-right:38px;
+  }
+  .form-field input:focus,.form-field textarea:focus,.form-field select:focus{border-color:var(--cyan);outline:none;}
   .contact-form small{text-align:center;}
   .contact-form-success{
     max-width:420px;margin:24px auto 0;text-align:center;
@@ -1046,15 +1050,34 @@
             <input id="cfName" name="name" type="text" required data-i18n-placeholder="form_name_placeholder" placeholder="Як тебе звати">
           </div>
           <div class="form-field">
+            <label for="cfAge" data-i18n="form_age_label">Вік</label>
+            <input id="cfAge" name="age" type="number" min="14" max="99" required data-i18n-placeholder="form_age_placeholder" placeholder="Скільки тобі років">
+          </div>
+          <div class="form-field">
             <label for="cfTelegram" data-i18n="form_telegram_label">Telegram</label>
             <input id="cfTelegram" name="telegram" type="text" required data-i18n-placeholder="form_telegram_placeholder" placeholder="@нік у Telegram">
           </div>
           <div class="form-field">
-            <label for="cfPhone" data-i18n="form_phone_label">Номер телефону (необов’язково)</label>
-            <input id="cfPhone" name="phone" type="tel" data-i18n-placeholder="form_phone_placeholder" placeholder="+380...">
+            <label for="cfCity" data-i18n="form_city_label">Місто (необов’язково)</label>
+            <input id="cfCity" name="city" type="text" data-i18n-placeholder="form_city_placeholder" placeholder="Твоє місто">
           </div>
           <div class="form-field">
-            <label for="cfMessage" data-i18n="form_message_label">Коротко про себе (необов’язково)</label>
+            <label for="cfTiktok" data-i18n="form_tiktok_label">TikTok (необов’язково)</label>
+            <input id="cfTiktok" name="tiktok" type="text" data-i18n-placeholder="form_tiktok_placeholder" placeholder="@нік або посилання">
+          </div>
+          <div class="form-field">
+            <label for="cfEnglish" data-i18n="form_english_label">Рівень англійської (необов’язково)</label>
+            <select id="cfEnglish" name="english">
+              <option value="" data-i18n="form_english_placeholder">Оберіть рівень</option>
+              <option value="A1">A1</option>
+              <option value="A2">A2</option>
+              <option value="B1">B1</option>
+              <option value="B2">B2</option>
+              <option value="C1+">C1+</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="cfMessage" data-i18n="form_message_label">Досвід стрімів (необов’язково)</label>
             <textarea id="cfMessage" name="message" rows="3" data-i18n-placeholder="form_message_placeholder" placeholder="Досвід, коли готова почати, будь-що важливе"></textarea>
           </div>
           <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;" id="cfSubmitBtn">
@@ -1261,11 +1284,17 @@
       contact_mode_form: "Заповнити форму",
       form_name_label: "Ім’я",
       form_name_placeholder: "Як тебе звати",
+      form_age_label: "Вік",
+      form_age_placeholder: "Скільки тобі років",
       form_telegram_label: "Telegram",
       form_telegram_placeholder: "@нік у Telegram",
-      form_phone_label: "Номер телефону (необов’язково)",
-      form_phone_placeholder: "+380...",
-      form_message_label: "Коротко про себе (необов’язково)",
+      form_city_label: "Місто (необов’язково)",
+      form_city_placeholder: "Твоє місто",
+      form_tiktok_label: "TikTok (необов’язково)",
+      form_tiktok_placeholder: "@нік або посилання",
+      form_english_label: "Рівень англійської (необов’язково)",
+      form_english_placeholder: "Оберіть рівень",
+      form_message_label: "Досвід стрімів (необов’язково)",
       form_message_placeholder: "Досвід, коли готова почати, будь-що важливе",
       form_submit: "Надіслати заявку",
       form_note: "Ми отримаємо заявку і самі напишемо тобі в Telegram.",
@@ -1387,11 +1416,17 @@
       contact_mode_form: "Fill out a form",
       form_name_label: "Name",
       form_name_placeholder: "Your name",
+      form_age_label: "Age",
+      form_age_placeholder: "How old are you",
       form_telegram_label: "Telegram",
       form_telegram_placeholder: "@handle on Telegram",
-      form_phone_label: "Phone number (optional)",
-      form_phone_placeholder: "+1...",
-      form_message_label: "A bit about yourself (optional)",
+      form_city_label: "City (optional)",
+      form_city_placeholder: "Your city",
+      form_tiktok_label: "TikTok (optional)",
+      form_tiktok_placeholder: "@handle or link",
+      form_english_label: "English level (optional)",
+      form_english_placeholder: "Choose a level",
+      form_message_label: "Streaming experience (optional)",
       form_message_placeholder: "Experience, when you're ready to start, anything relevant",
       form_submit: "Send request",
       form_note: "We'll receive your request and message you on Telegram ourselves.",
@@ -1442,26 +1477,35 @@
   const contactForm = document.getElementById('contactForm');
   const formSuccess = document.getElementById('formSuccess');
   const cfSubmitBtn = document.getElementById('cfSubmitBtn');
-  const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScA3IlOzQKXGpUveMc0CJqpP-JifDqLoUvBviSrGlNnCW06Ig/formResponse';
+  const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfv6tgnunmWLeDgqsX-HHj79Ha27x21GFuKdYd2eyczTc2U7g/formResponse';
   const GOOGLE_FORM_FIELDS = {
-    name: 'entry.625826675',
-    telegram: 'entry.672515188',
-    phone: 'entry.2091207153',
-    message: 'entry.1211036861'
+    name: 'entry.666361824',
+    age: 'entry.78884759',
+    telegram: 'entry.2105154711',
+    city: 'entry.599135502',
+    tiktok: 'entry.1183485359',
+    english: 'entry.873567765',
+    message: 'entry.779199056'
   };
 
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = contactForm.name.value.trim();
+    const age = contactForm.age.value.trim();
     const telegram = contactForm.telegram.value.trim();
-    const phone = contactForm.phone.value.trim();
+    const city = contactForm.city.value.trim();
+    const tiktok = contactForm.tiktok.value.trim();
+    const english = contactForm.english.value.trim();
     const message = contactForm.message.value.trim();
-    if (!name || !telegram) return;
+    if (!name || !age || !telegram) return;
 
     const data = new FormData();
     data.append(GOOGLE_FORM_FIELDS.name, name);
+    data.append(GOOGLE_FORM_FIELDS.age, age);
     data.append(GOOGLE_FORM_FIELDS.telegram, telegram);
-    data.append(GOOGLE_FORM_FIELDS.phone, phone);
+    data.append(GOOGLE_FORM_FIELDS.city, city);
+    data.append(GOOGLE_FORM_FIELDS.tiktok, tiktok);
+    data.append(GOOGLE_FORM_FIELDS.english, english);
     data.append(GOOGLE_FORM_FIELDS.message, message);
 
     cfSubmitBtn.disabled = true;
