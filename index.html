@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALive — команда для дівчат у TikTok Live</title>
+<meta id="metaDescription" name="description" content="ALive допомагає підготувати профіль, освоїти механіку TikTok Live та розвиватися разом із ментором і командою. Зв’язок напряму в Telegram.">
+<meta name="theme-color" content="#1B1220">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ALive — команда для дівчат у TikTok Live">
+<meta property="og:description" content="ALive допомагає підготувати профіль, освоїти механіку TikTok Live та розвиватися разом із ментором і командою. Зв’язок напряму в Telegram.">
+<meta property="og:image" content="assets/alive-brand.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon-96.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#1B1220;
+    --bg-1:#2C1F35;
+    --bg-2:#3B2A43;
+    --magenta:#C48CB8;
+    --cyan:#F5DCEF;
+    --violet:#8D5C7D;
+    --text-0:#F7EDF3;
+    --text-1:#C7AEC2;
+    --line:rgba(255,255,255,0.10);
+    --radius:18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 700px at 50% -8%, rgba(196,140,184,0.11), transparent 60vh),
+      linear-gradient(180deg, var(--bg-2) 0, var(--bg-1) 40vh, var(--bg-0) 85vh);
+    color:var(--text-0);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    overflow-x:hidden;
+    position:relative;
+  }
+  body::after{
+    content:"";
+    position:fixed;
+    top:0;right:0;bottom:0;left:0;
+    z-index:-1;
+    background:radial-gradient(ellipse 1200px 800px at 50% 0%, rgba(141,92,125,0.06), transparent 65%);
+    pointer-events:none;
+  }
+  h1,h2,h3{
+    font-family:'Unbounded',sans-serif;
+    line-height:1.12;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+  :focus-visible{outline:3px solid var(--cyan);outline-offset:3px;}
+  .container{
+    width:100%;
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* HEADER */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    width:100%;
+    padding:20px 0;
+    background:rgba(27,18,32,0.55);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line);
+    box-shadow:0 8px 24px -12px rgba(0,0,0,0.35);
+    transition:background .35s ease, box-shadow .35s ease, padding .35s ease;
+  }
+  header.scrolled{
+    background:rgba(27,18,32,0.86);
+    backdrop-filter:blur(14px);
+    box-shadow:0 1px 0 var(--line);
+    padding:14px 0;
+  }
+  .nav-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;flex-shrink:0;
+    font-family:'Unbounded',sans-serif;
+    font-weight:700;
+    font-size:1.05rem;
+  }
+  .logo-mark{
+    flex-shrink:0;
+    width:36px;
+    height:36px;
+    border-radius:10px;
+    object-fit:cover;
+    box-shadow:0 4px 14px -4px rgba(196,140,184,.6);
+  }
+  .logo-word{letter-spacing:0.02em;}
+  nav ul{display:flex;gap:20px;list-style:none;}
+  nav a{
+    font-size:0.92rem;
+    color:var(--text-1);
+    transition:color .2s ease;
+    white-space:nowrap;
+  }
+  nav a:hover{color:var(--text-0);}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 22px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:0.92rem;
+    transition:transform .2s ease, box-shadow .2s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:linear-gradient(95deg,var(--magenta),var(--violet));
+    color:#fff;
+    box-shadow:0 8px 24px -8px rgba(196,140,184,.55);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px -8px rgba(196,140,184,.7);}
+  .btn-ghost{
+    border:1px solid var(--line);
+    color:var(--text-0);
+  }
+  .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);}
+  .btn svg{width:18px;height:18px;flex-shrink:0;}
+  .burger{
+    display:none;
+    width:40px;height:40px;flex-shrink:0;
+    border-radius:10px;
+    border:1px solid var(--line);
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+  }
+  .burger span{width:18px;height:2px;background:var(--text-0);border-radius:2px;}
+  .lang-switch{display:flex;border:1px solid var(--line);border-radius:100px;padding:3px;gap:2px;flex-shrink:0;}
+  .lang-btn{
+    padding:6px 14px;border-radius:100px;font-size:0.8rem;font-weight:600;
+    color:var(--text-1);min-width:40px;text-align:center;
+    background:rgba(255,255,255,0.03);
+    transition:background .2s ease, color .2s ease;
+  }
+  .lang-btn:hover{color:var(--text-0);}
+  .lang-btn.is-active{background:var(--bg-1);color:var(--text-0);}
+  .mobile-lang-switch{display:flex;width:fit-content;margin:4px 0 16px;}
+  @media (max-width:920px){ .header-actions .lang-switch{display:none;} }
+
+  /* HERO */
+  .hero{position:relative;padding:64px 0 48px;overflow:hidden;}
+  .hero-orb{
+    position:absolute;
+    top:-220px;left:50%;
+    transform:translateX(-50%);
+    width:820px;height:820px;
+    border-radius:50%;
+    background:radial-gradient(circle at 50% 45%, rgba(196,140,184,0.30), rgba(245,220,239,0.16) 45%, transparent 72%);
+    filter:blur(14px);
+    animation:orb-pulse 7s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes orb-pulse{
+    0%,100%{opacity:.75; transform:translateX(-50%) scale(1);}
+    50%{opacity:1; transform:translateX(-50%) scale(1.06);}
+  }
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:center;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:8px 16px;border-radius:100px;
+    border:1px solid var(--line);
+    font-size:0.85rem;color:var(--text-1);
+    margin-bottom:24px;
+  }
+  .eyebrow .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--magenta);
+    animation:dot-ping 1.8s ease-out infinite;
+  }
+  @keyframes dot-ping{
+    0%{box-shadow:0 0 0 0 rgba(196,140,184,.55);}
+    70%{box-shadow:0 0 0 8px rgba(196,140,184,0);}
+    100%{box-shadow:0 0 0 0 rgba(196,140,184,0);}
+  }
+  .hero h1{font-size:clamp(2.3rem, 4.6vw, 3.6rem);font-weight:800;max-width:640px;}
+  .hero-line{display:block;}
+  .hero h1 .grad{
+    background:linear-gradient(95deg,var(--cyan),var(--magenta));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lead{margin-top:22px;font-size:1.08rem;color:var(--text-1);max-width:520px;}
+  .hero-actions{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+
+  /* phone mockup */
+  .phone-wrap{position:relative;display:flex;flex-direction:column;align-items:center;}
+  .phone-tilt{animation:phone-float 6s ease-in-out infinite;}
+  @keyframes phone-float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+  }
+  .phone-card{position:relative;width:260px;aspect-ratio:9/18.5;}
+  .phone{
+    position:absolute;top:0;left:0;right:0;bottom:0;
+    border-radius:38px;border:1px solid rgba(255,255,255,0.12);
+    padding:10px;
+    background:linear-gradient(155deg,#4A3550,#211527 55%,#150E1B);
+    box-shadow:
+      0 40px 90px -25px rgba(0,0,0,.65),
+      0 12px 40px -10px rgba(141,92,125,.45),
+      inset 0 1px 0 rgba(255,255,255,.12);
+  }
+  .phone::before{
+    content:"";position:absolute;right:-2px;top:90px;
+    width:3px;height:46px;border-radius:2px 0 0 2px;
+    background:rgba(0,0,0,.5);
+  }
+  .phone::after{
+    content:"";position:absolute;top:20px;left:50%;
+    transform:translateX(-50%);width:7px;height:7px;border-radius:50%;
+    background:rgba(0,0,0,.55);
+    box-shadow:0 0 0 3px rgba(255,255,255,0.04);z-index:3;
+  }
+  .phone-screen{
+    height:100%;width:100%;border-radius:30px;background:#0E0812;
+    position:relative;overflow:hidden;display:flex;align-items:flex-end;
+  }
+  .phone-video{
+    position:absolute;top:0;right:0;bottom:0;left:0;
+    width:100%;height:100%;object-fit:cover;
+  }
+  .phone-sheen{
+    position:absolute;top:0;right:0;bottom:0;left:0;
+    background:linear-gradient(115deg, rgba(255,255,255,.10) 0%, transparent 22%, transparent 78%, rgba(255,255,255,.05) 100%);
+    pointer-events:none;z-index:2;
+  }
+  .phone-badge{
+    position:relative;z-index:3;margin:16px;
+    display:inline-flex;align-items:center;gap:8px;
+    padding:7px 12px;border-radius:100px;
+    background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);
+    font-size:0.78rem;color:var(--text-0);
+    font-weight:600;letter-spacing:0.03em;
+  }
+  .phone-badge .rec{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--magenta);animation:dot-ping 1.8s ease-out infinite;
+  }
+  @media (prefers-reduced-motion:reduce){ .phone-tilt{animation:none !important;transform:none;} }
+
+  /* marquee */
+  .marquee{
+    margin-top:40px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    overflow:hidden;padding:18px 0;
+  }
+  .marquee-track{
+    display:flex;width:max-content;gap:28px;align-items:center;
+    animation:marquee 42s linear infinite;
+  }
+  .marquee-track span{
+    font-family:'Unbounded',sans-serif;font-size:0.82rem;
+    letter-spacing:0.04em;text-transform:uppercase;color:var(--text-1);
+  }
+  .marquee-track i{width:5px;height:5px;border-radius:50%;background:var(--magenta);display:block;}
+  @keyframes marquee{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  @media (prefers-reduced-motion:reduce){ .marquee-track{animation:none;} }
+
+  /* SECTION shared */
+  section{padding:64px 0;}
+  .section-head{max-width:640px;margin-bottom:40px;}
+  .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+  .section-head h2{font-size:clamp(1.7rem,3vw,2.3rem);font-weight:700;}
+  .section-head p{margin-top:14px;color:var(--text-1);font-size:1.02rem;}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* MANIFESTO / ABOUT */
+  .manifesto-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  .manifesto-grid h2{font-size:clamp(1.7rem,3vw,2.3rem);font-weight:700;}
+  .manifesto-grid .text-chrome{
+    background:linear-gradient(95deg,var(--cyan),var(--magenta));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .manifesto-lead{color:var(--text-1);font-size:1.05rem;margin-top:18px;max-width:480px;}
+
+  .about-visual{
+    position:relative;height:0;padding-top:87.5%;
+    border-radius:24px;overflow:hidden;
+    background:radial-gradient(ellipse at 72% 16%, rgba(196,140,184,.16), transparent 60%), var(--bg-1);
+    border:1px solid var(--line);
+  }
+  .path-glow{
+    position:absolute;top:-12%;right:-10%;width:60%;height:55%;
+    background:radial-gradient(circle, rgba(245,220,239,.28), transparent 70%);
+    filter:blur(18px);pointer-events:none;
+  }
+  .path-svg{position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;}
+  .path-svg .contour{fill:none;stroke:rgba(255,255,255,.07);stroke-width:1.5;}
+  .path-svg .route{
+    fill:none;stroke:var(--magenta);stroke-width:2.2;stroke-linecap:round;
+    filter:drop-shadow(0 0 6px rgba(196,140,184,.65));
+  }
+  .path-svg .node{
+    fill:var(--cyan);stroke:var(--bg-1);stroke-width:3;
+    filter:drop-shadow(0 0 8px rgba(245,220,239,.85));
+    transform-box:fill-box;transform-origin:center;
+    animation:node-pulse 2.4s ease-in-out infinite;
+  }
+  .path-svg .node:nth-of-type(2){animation-delay:.3s;}
+  .path-svg .node:nth-of-type(3){animation-delay:.6s;}
+  .path-svg .flag line{stroke:var(--text-1);stroke-width:2;}
+  .path-svg .flag path{fill:var(--magenta);filter:drop-shadow(0 0 6px rgba(196,140,184,.7));}
+  @keyframes node-pulse{
+    0%,100%{transform:scale(1); opacity:.85;}
+    50%{transform:scale(1.35); opacity:1;}
+  }
+  .path-tag{position:absolute;font-size:0.72rem;color:var(--text-1);font-weight:600;letter-spacing:0.02em;}
+  .path-tag.start{ left:6%; bottom:8%; }
+  .path-tag.finish{ right:20%; top:4%; text-align:right; }
+  .path-label{
+    position:absolute;font-size:0.8rem;font-weight:600;color:var(--text-0);
+    background:rgba(0,0,0,.35);backdrop-filter:blur(4px);
+    padding:5px 11px;border-radius:100px;white-space:nowrap;
+  }
+  .path-label.l1{ left:8.3%; top:85.7%; transform:translate(-6%,-260%); }
+  .path-label.l2{ left:43.7%; top:57.1%; transform:translate(-50%,-230%); }
+  .path-label.l3{ left:70.8%; top:26.2%; transform:translate(-112%,-50%); }
+
+  /* JOURNEY / process */
+  .process-list{display:flex;flex-direction:column;border-top:1px solid var(--line);}
+  .process-item{
+    display:grid;grid-template-columns:80px 1fr;gap:24px;
+    padding:28px 0;border-bottom:1px solid var(--line);
+  }
+  .process-item .num{
+    font-family:'Unbounded',sans-serif;font-size:1.6rem;font-weight:700;color:var(--violet);
+  }
+  .process-item h3{font-size:1.1rem;font-weight:600;margin-bottom:6px;}
+  .process-item p{color:var(--text-1);}
+  .process-item a{color:var(--cyan);text-decoration:underline;text-underline-offset:3px;}
+
+  /* FIT */
+  .fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  .fit-list{list-style:none;display:flex;flex-direction:column;gap:18px;margin-top:8px;}
+  .fit-list li{display:flex;gap:14px;align-items:flex-start;color:var(--text-1);font-size:0.98rem;}
+  .fit-list .num{
+    flex-shrink:0;width:32px;height:32px;border-radius:50%;
+    border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+    font-family:'Unbounded',sans-serif;font-size:0.8rem;color:var(--text-0);
+  }
+  .fit-note{
+    margin-top:28px;padding-top:24px;border-top:1px solid var(--line);
+    color:var(--text-1);font-size:0.95rem;
+  }
+  .fit-note strong{color:var(--text-0);}
+
+  /* COMMUNITY cards */
+  .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .note-card{
+    border-radius:var(--radius);overflow:hidden;background:var(--bg-1);
+    border:1px solid var(--line);padding:24px;
+  }
+  .note-card .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:34px;height:34px;border-radius:50%;
+    background:linear-gradient(135deg,var(--magenta),var(--violet));
+    color:#fff;font-family:'Unbounded',sans-serif;font-size:0.78rem;font-weight:700;
+    margin-bottom:16px;
+  }
+  .note-card h3{font-size:1.02rem;font-weight:600;margin-bottom:6px;}
+  .note-card p{color:var(--text-1);font-size:0.92rem;}
+
+  /* CASES */
+  .cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .case-card{
+    border-radius:var(--radius);overflow:hidden;background:var(--bg-1);border:1px solid var(--line);
+  }
+  .case-thumb{
+    height:150px;background:linear-gradient(135deg,var(--bg-2),var(--bg-0));
+    position:relative;display:flex;align-items:center;justify-content:center;
+  }
+  .case-thumb svg{width:44px;height:44px;color:var(--magenta);opacity:.8;}
+  .case-body{padding:20px;}
+  .case-tag{
+    display:inline-block;font-size:0.76rem;color:var(--cyan);
+    border:1px solid rgba(245,220,239,.3);padding:3px 10px;border-radius:100px;margin-bottom:10px;
+  }
+  .case-body h3{font-size:1.02rem;font-weight:600;margin-bottom:6px;}
+  .case-body p{color:var(--text-1);font-size:0.92rem;}
+  .case-note{margin-top:24px;color:var(--text-1);font-size:0.85rem;}
+
+  /* FAQ */
+  .faq-list{display:flex;flex-direction:column;gap:12px;}
+  .faq-item{
+    border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--bg-1);overflow:hidden;
+  }
+  .faq-item summary{
+    list-style:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:20px 24px;font-weight:600;font-size:0.98rem;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary .plus{
+    flex-shrink:0;width:26px;height:26px;border-radius:50%;
+    border:1px solid var(--line);position:relative;
+    transition:transform .25s ease, border-color .25s ease;
+  }
+  .faq-item summary .plus::before,.faq-item summary .plus::after{
+    content:"";position:absolute;background:var(--text-1);
+    top:50%;left:50%;transform:translate(-50%,-50%);
+  }
+  .faq-item summary .plus::before{width:10px;height:1.5px;}
+  .faq-item summary .plus::after{width:1.5px;height:10px;}
+  .faq-item[open] summary .plus{transform:rotate(45deg);border-color:var(--cyan);}
+  .faq-item p{padding:0 24px 22px;color:var(--text-1);font-size:0.95rem;}
+  .faq-item a{color:var(--cyan);text-decoration:underline;text-underline-offset:3px;}
+
+  /* CTA / CONTACT */
+  .cta{
+    background:linear-gradient(180deg,var(--bg-1),var(--bg-0));
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    position:relative;overflow:hidden;
+  }
+  .cta-inner{
+    position:relative;max-width:640px;margin:0 auto;text-align:center;
+  }
+  .cta-inner .eyebrow{margin-left:auto;margin-right:auto;}
+  .cta h2{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:700;margin-bottom:16px;}
+  .cta p{color:var(--text-1);max-width:480px;margin:0 auto;}
+  .cta small{display:block;margin-top:18px;color:var(--text-1);font-size:0.82rem;}
+  .contact-switch{
+    display:inline-flex;border:1px solid var(--line);border-radius:100px;
+    padding:4px;gap:4px;margin-top:32px;
+  }
+  .contact-switch-btn{
+    padding:10px 18px;border-radius:100px;font-size:0.86rem;font-weight:600;
+    color:var(--text-1);transition:background .2s ease, color .2s ease;
+  }
+  .contact-switch-btn.is-active{background:var(--bg-1);color:var(--text-0);}
+  .contact-switch-btn:hover{color:var(--text-0);}
+  .contact-panel{margin-top:24px;}
+  .contact-panel[hidden]{display:none;}
+  .contact-form{
+    text-align:left;max-width:420px;margin:24px auto 0;
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .form-field label{display:block;font-size:0.85rem;color:var(--text-1);margin-bottom:6px;}
+  .form-field input,.form-field textarea{
+    width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);
+    background:var(--bg-0);color:var(--text-0);font-family:inherit;font-size:0.95rem;
+    resize:vertical;transition:border-color .2s ease;
+  }
+  .form-field input:focus,.form-field textarea:focus{border-color:var(--cyan);outline:none;}
+  .contact-form small{text-align:center;}
+  .contact-form-success{
+    max-width:420px;margin:24px auto 0;text-align:center;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    padding:32px 24px;border-radius:var(--radius);border:1px solid var(--line);background:var(--bg-1);
+  }
+  .contact-form-success svg{width:40px;height:40px;color:var(--magenta);}
+  .contact-form-success p{font-family:'Unbounded',sans-serif;font-size:1.05rem;font-weight:600;color:var(--text-0);}
+  .contact-form-success small{color:var(--text-1);font-size:0.9rem;}
+  .cta-watermark{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:520px;height:520px;opacity:.14;pointer-events:none;
+    border-radius:50%;object-fit:cover;
+    mask-image:radial-gradient(circle, #000 45%, transparent 75%);
+    -webkit-mask-image:radial-gradient(circle, #000 45%, transparent 75%);
+  }
+
+  /* FOOTER */
+  footer{padding:52px 0 36px;}
+  .footer-grid{
+    display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;
+    gap:32px;border-top:1px solid var(--line);padding-top:32px;
+  }
+  .footer-brand{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+  .footer-brand-mark{
+    width:44px;height:44px;border-radius:12px;object-fit:cover;
+    box-shadow:0 6px 18px -6px rgba(196,140,184,.55);
+  }
+  .footer-col p{color:var(--text-1);font-size:0.88rem;}
+  .footer-nav{
+    display:grid;grid-auto-flow:column;grid-template-rows:repeat(3,auto);
+    column-gap:32px;row-gap:10px;
+  }
+  .footer-nav a{color:var(--text-1);font-size:0.9rem;}
+  .footer-nav a:hover{color:var(--text-0);}
+  .footer-contact{display:flex;flex-direction:column;gap:10px;align-items:flex-start;}
+  .footer-label{font-size:0.78rem;color:var(--text-1);text-transform:uppercase;letter-spacing:0.05em;}
+  .footer-contact a{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:9px 16px;border-radius:100px;border:1px solid var(--line);
+    font-size:0.88rem;font-weight:600;color:var(--text-0);
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .footer-contact a svg{width:15px;height:15px;flex-shrink:0;}
+  .footer-contact a:hover{border-color:var(--cyan);color:var(--cyan);}
+  .footer-bottom{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+    margin-top:32px;padding-top:20px;border-top:1px solid var(--line);
+    font-size:0.78rem;color:var(--text-1);
+  }
+
+  /* mobile sticky */
+  .mobile-sticky{
+    display:none;position:fixed;left:16px;right:16px;bottom:16px;z-index:90;
+  }
+  .mobile-sticky .btn{width:100%;justify-content:center;}
+
+  /* scroll to top */
+  .scroll-top{
+    position:fixed;right:20px;bottom:20px;z-index:95;
+    width:44px;height:44px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--bg-1);border:1px solid var(--line);color:var(--text-0);
+    box-shadow:0 8px 20px -8px rgba(0,0,0,.5);
+    opacity:0;visibility:hidden;transform:translateY(10px);
+    transition:opacity .25s ease, transform .25s ease, visibility .25s ease, border-color .2s ease, color .2s ease;
+  }
+  .scroll-top.is-visible{opacity:1;visibility:visible;transform:translateY(0);}
+  .scroll-top:hover{border-color:var(--cyan);color:var(--cyan);}
+  .scroll-top svg{width:20px;height:20px;}
+  @media (max-width:920px){ .scroll-top{bottom:88px;} }
+
+  @media (max-width:920px){
+    nav ul{display:none;}
+    .burger{display:flex;}
+    section{padding:44px 0;}
+    .section-head{margin-bottom:28px;}
+    .hero-grid{grid-template-columns:1fr;}
+    .phone-wrap{margin-top:32px;}
+    .manifesto-grid,.fit-grid{grid-template-columns:1fr;gap:28px;}
+    .about-visual{width:100%;max-width:420px;margin:0 auto;}
+    .cards-grid{grid-template-columns:1fr;}
+    .cases-grid{
+      display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;
+      gap:16px;margin:0 -24px;padding:4px 8% 8px;scroll-padding-inline:8%;
+      -webkit-overflow-scrolling:touch;scrollbar-width:none;
+    }
+    .cases-grid::-webkit-scrollbar{display:none;}
+    .case-card{flex:0 0 84%;scroll-snap-align:center;}
+    .mobile-sticky{display:block;}
+    footer{padding-bottom:96px;}
+  }
+  @media (max-width:600px){
+    .process-item{grid-template-columns:48px 1fr;}
+    .footer-nav{grid-auto-flow:row;grid-template-rows:none;grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="container nav-row">
+    <a href="#top" class="logo">
+      <img class="logo-mark" src="assets/alive-brand.webp" alt="Логотип ALive" width="36" height="36">
+      <span class="logo-word">ALive</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#about" data-i18n="nav_about">Про нас</a></li>
+        <li><a href="#cases" data-i18n="nav_cases">Кейси</a></li>
+        <li><a href="#journey" data-i18n="nav_journey">Як почати</a></li>
+        <li><a href="#community" data-i18n="nav_community">Не сама в ефірі</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions" style="display:flex;gap:12px;align-items:center;">
+      <div class="lang-switch" role="group" aria-label="Мова сайту">
+        <button type="button" class="lang-btn is-active" data-lang="uk">UA</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <a href="#contact" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+        <span data-i18n="cta_connect">Зв’язатися</span>
+      </a>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div id="mobileMenu" style="display:none;" class="container">
+    <div class="lang-switch mobile-lang-switch" role="group" aria-label="Мова сайту">
+      <button type="button" class="lang-btn is-active" data-lang="uk">UA</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:16px;padding:0 0 20px;">
+      <li><a href="#about" data-i18n="nav_about">Про нас</a></li>
+      <li><a href="#cases" data-i18n="nav_cases">Кейси</a></li>
+      <li><a href="#journey" data-i18n="nav_journey">Як почати</a></li>
+      <li><a href="#community" data-i18n="nav_community">Не сама в ефірі</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-orb" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>ALIVE / TIKTOK LIVE</span>
+        <h1>
+          <span class="hero-line" data-i18n="hero_title_1">Виходь у <span class="grad">TikTok Live</span>.</span>
+          <span class="hero-line" data-i18n="hero_title_2">Рости не сама.</span>
+        </h1>
+        <p class="lead" data-i18n="hero_lead">ALive допомагає підготувати профіль, освоїти механіку ефірів і розвиватися разом з особистим ментором та командою. Можна почати з нуля — головне, бути готовою діяти регулярно.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+            <span data-i18n="hero_cta">Почати розмову</span>
+          </a>
+          <a href="#about" class="btn btn-ghost" data-i18n="hero_secondary">Подивитися, як усе влаштовано</a>
+        </div>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone-tilt">
+          <div class="phone-card">
+            <div class="phone" role="img" aria-label="Фрагмент ефіру у вертикальному форматі">
+              <div class="phone-screen">
+                <video class="phone-video" autoplay loop muted playsinline preload="metadata" poster="assets/phone-poster.webp">
+                  <source src="assets/phone-live.mp4" type="video/mp4">
+                </video>
+                <span class="phone-sheen" aria-hidden="true"></span>
+                <span class="phone-badge"><span class="rec"></span>LIVE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span data-i18n="marquee_profile">профіль</span><i></i><span data-i18n="marquee_live">ефір</span><i></i><span data-i18n="marquee_delivery">подача</span><i></i><span data-i18n="marquee_feedback">зворотний зв’язок</span><i></i>
+        <span data-i18n="marquee_profile">профіль</span><i></i><span data-i18n="marquee_live">ефір</span><i></i><span data-i18n="marquee_delivery">подача</span><i></i><span data-i18n="marquee_feedback">зворотний зв’язок</span><i></i>
+        <span data-i18n="marquee_profile">профіль</span><i></i><span data-i18n="marquee_live">ефір</span><i></i><span data-i18n="marquee_delivery">подача</span><i></i><span data-i18n="marquee_feedback">зворотний зв’язок</span><i></i>
+        <span data-i18n="marquee_profile">профіль</span><i></i><span data-i18n="marquee_live">ефір</span><i></i><span data-i18n="marquee_delivery">подача</span><i></i><span data-i18n="marquee_feedback">зворотний зв’язок</span><i></i>
+        <span data-i18n="marquee_profile">профіль</span><i></i><span data-i18n="marquee_live">ефір</span><i></i><span data-i18n="marquee_delivery">подача</span><i></i><span data-i18n="marquee_feedback">зворотний зв’язок</span><i></i>
+        <span data-i18n="marquee_profile">профіль</span><i></i><span data-i18n="marquee_live">ефір</span><i></i><span data-i18n="marquee_delivery">подача</span><i></i><span data-i18n="marquee_feedback">зворотний зв’язок</span><i></i>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container manifesto-grid">
+      <div class="reveal">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="about_eyebrow">ПРО НАС</span></p>
+        <h2 data-i18n="about_title">Команда поруч, поки ти знаходиш свою <span class="text-chrome">подачу.</span></h2>
+        <p class="manifesto-lead" data-i18n="about_copy">ALive поєднує практику, зворотний зв’язок і живе оточення. Тут не потрібно спочатку ставати ідеальною — основу збирають разом із тобою, а кожен наступний ефір стає матеріалом для розвитку.</p>
+      </div>
+      <div class="about-visual reveal" aria-hidden="true">
+        <span class="path-glow"></span>
+        <svg viewBox="0 0 480 420" class="path-svg" preserveAspectRatio="xMidYMid meet">
+          <path class="contour" d="M-20,350 C80,310 160,370 260,310 C340,270 400,310 500,270"/>
+          <path class="contour" d="M-20,305 C90,265 170,325 270,265 C350,225 410,265 500,225"/>
+          <path class="route" d="M40,360 C120,360 140,260 210,240 C280,220 260,140 340,110 C390,90 400,70 430,58"/>
+          <circle class="node" cx="40" cy="360" r="7"/>
+          <circle class="node" cx="210" cy="240" r="7"/>
+          <circle class="node" cx="340" cy="110" r="7"/>
+          <g class="flag">
+            <line x1="430" y1="58" x2="430" y2="18"/>
+            <path d="M430,18 L456,26 L430,34 Z"/>
+          </g>
+        </svg>
+        <span class="path-tag start" data-i18n="path_start">Старт</span>
+        <span class="path-tag finish" data-i18n="path_finish">Регулярні ефіри</span>
+        <span class="path-label l1" data-i18n="path_l1">Профіль</span>
+        <span class="path-label l2" data-i18n="path_l2">Перший ефір</span>
+        <span class="path-label l3" data-i18n="path_l3">Ментор поруч</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="cases_eyebrow">КЕЙСИ</span></p>
+        <h2 data-i18n="cases_title">Приклади шляху всередині ALive</h2>
+        <p data-i18n="cases_intro">Три формати, які виросли з нуля разом із командою. Імена та деталі — додаються під реальні кейси.</p>
+      </div>
+      <div class="cases-grid">
+        <div class="case-card reveal">
+          <div class="case-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="3"/><path d="M21 8.5v7L17 13v-2l4-2.5Z"/></svg></div>
+          <div class="case-body">
+            <span class="case-tag" data-i18n="case_tag_1">[ніша: батли]</span>
+            <h3 data-i18n="case_name">[Ім’я / нік]</h3>
+            <p data-i18n="case_desc">[Короткий опис шляху: з чого стартувала і якого результату досягла]</p>
+          </div>
+        </div>
+        <div class="case-card reveal">
+          <div class="case-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16v12H8l-4 4Z"/></svg></div>
+          <div class="case-body">
+            <span class="case-tag" data-i18n="case_tag_2">[ніша: розмовний формат]</span>
+            <h3 data-i18n="case_name">[Ім’я / нік]</h3>
+            <p data-i18n="case_desc">[Короткий опис шляху: з чого стартувала і якого результату досягла]</p>
+          </div>
+        </div>
+        <div class="case-card reveal">
+          <div class="case-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l2.6 5.9L21 9.6l-4.5 4.2L17.6 21 12 17.6 6.4 21l1.1-7.2L3 9.6l6.4-.7L12 3Z"/></svg></div>
+          <div class="case-body">
+            <span class="case-tag" data-i18n="case_tag_3">[ніша: гумор / чат-шоу]</span>
+            <h3 data-i18n="case_name">[Ім’я / нік]</h3>
+            <p data-i18n="case_desc">[Короткий опис шляху: з чого стартувала і якого результату досягла]</p>
+          </div>
+        </div>
+      </div>
+      <p class="case-note" data-i18n="case_note">Плейсхолдери — заміни на реальні імена, ніші та результати, коли будуть готові перші кейси.</p>
+    </div>
+  </section>
+
+  <section id="journey">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="journey_eyebrow">ЯК ПОЧАТИ</span></p>
+        <h2 data-i18n="fit_title">Тобі до нас, якщо ти готова бути в процесі</h2>
+        <p data-i18n="fit_intro">Не шукаємо ідеальний старт. Важливіша готовність пробувати, слухати зворотний зв’язок і повертатися в ефір.</p>
+      </div>
+      <div class="fit-grid" style="margin-bottom:56px;">
+        <ul class="fit-list">
+          <li><span class="num">01</span><span data-i18n="fit_1">Ти зараз не співпрацюєш з іншим агентством прямих трансляцій.</span></li>
+          <li><span class="num">02</span><span data-i18n="fit_2">Ти готова регулярно виходити в ефір і бути на зв’язку з ментором.</span></li>
+          <li><span class="num">03</span><span data-i18n="fit_3">Ти відкрита до зворотного зв’язку, навчання та спілкування з аудиторією.</span></li>
+        </ul>
+        <div>
+          <h3 style="font-size:1.1rem;font-weight:600;margin-bottom:8px;" data-i18n="journey_title">Від першого повідомлення — до першого впевненого ефіру</h3>
+          <p style="color:var(--text-1);font-size:0.95rem;" data-i18n="journey_subtitle">П’ять кроків, які проходить кожна дівчина в команді.</p>
+        </div>
+      </div>
+      <ol class="process-list" style="list-style:none;">
+        <li class="process-item reveal">
+          <span class="num">01</span>
+          <div><h3 data-i18n="journey_1_title">Ти пишеш нам</h3><p data-i18n="journey_1_text">Відкриваєш Telegram, пишеш <a href="https://t.me/hr_alive" target="_blank" rel="noopener noreferrer">@hr_alive</a> і коротко розповідаєш про себе. Якщо TikTok-профіль уже є — можеш одразу надіслати посилання.</p></div>
+        </li>
+        <li class="process-item reveal">
+          <span class="num">02</span>
+          <div><h3 data-i18n="journey_2_title">Знайомимося</h3><p data-i18n="journey_2_text">Обговорюємо твій досвід, очікування, доступний графік і відповідаємо на запитання про формат команди.</p></div>
+        </li>
+        <li class="process-item reveal">
+          <span class="num">03</span>
+          <div><h3 data-i18n="journey_3_title">Збираємо основу</h3><p data-i18n="journey_3_text">Налаштовуємо профіль, напрямок, подачу та базовий сценарій ефіру.</p></div>
+        </li>
+        <li class="process-item reveal">
+          <span class="num">04</span>
+          <div><h3 data-i18n="journey_4_title">Виходимо в live</h3><p data-i18n="journey_4_text">Переходимо до практики та розбираємо перші складні моменти разом із ментором.</p></div>
+        </li>
+        <li class="process-item reveal">
+          <span class="num">05</span>
+          <div><h3 data-i18n="journey_5_title">Аналізуємо та посилюємо</h3><p data-i18n="journey_5_text">Працюємо над утриманням уваги, упевненістю, взаємодією з аудиторією та стабільністю ефірів.</p></div>
+        </li>
+      </ol>
+      <div class="fit-note" style="margin-top:40px;">
+        <p data-i18n="fit_note"><strong>Не впевнена, чи підходить тобі формат?</strong> Напиши @hr_alive — обговоримо особисто.</p>
+        <a href="#contact" class="btn btn-primary" style="margin-top:20px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+          <span data-i18n="telegram_ask">Поставити запитання</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="community">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="community_eyebrow">НЕ САМА В ЕФІРІ</span></p>
+        <h2 data-i18n="community_title">Підтримка продовжується після кнопки «завершити live»</h2>
+        <p data-i18n="community_intro">Після ефіру залишаються запитання, сумніви та ідеї. В ALive їх не потрібно розбирати наодинці: поруч ментор і учасниці, які знають цей формат зсередини.</p>
+      </div>
+      <div class="cards-grid">
+        <div class="note-card reveal">
+          <span class="num">01</span>
+          <h3 data-i18n="community_1_title">Можна запитати</h3>
+          <p data-i18n="community_1_text">Простір для запитань і складних ситуацій.</p>
+        </div>
+        <div class="note-card reveal">
+          <span class="num">02</span>
+          <h3 data-i18n="community_2_title">Можна розібрати</h3>
+          <p data-i18n="community_2_text">Зворотний зв’язок після ефіру.</p>
+        </div>
+        <div class="note-card reveal">
+          <span class="num">03</span>
+          <h3 data-i18n="community_3_title">Можна побачити інакше</h3>
+          <p data-i18n="community_3_text">Обмін підходами та досвідом усередині команди.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="faq_eyebrow">FAQ</span></p>
+        <h2 data-i18n="faq_title">Запитання перед першим повідомленням</h2>
+        <p data-i18n="faq_intro">Якщо твого запитання тут немає, напиши напряму в Telegram.</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary><span data-i18n="faq_1_q">Чи потрібен уже розкручений TikTok-акаунт?</span><span class="plus" aria-hidden="true"></span></summary>
+          <p data-i18n="faq_1_a">Ні. Почати можна з нового або невеликого акаунта. Команда допомагає вибудувати основу профілю та підготуватися до перших ефірів.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary><span data-i18n="faq_2_q">Чи потрібен досвід стримінгу?</span><span class="plus" aria-hidden="true"></span></summary>
+          <p data-i18n="faq_2_a">Ні. Важливіша готовність навчатися, пробувати й регулярно застосовувати зворотний зв’язок на практиці.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary><span data-i18n="faq_3_q">Що знадобиться для старту?</span><span class="plus" aria-hidden="true"></span></summary>
+          <p data-i18n="faq_3_a">Смартфон зі справною камерою, стабільний інтернет і місце, де можна спокійно проводити ефіри. Решту рекомендацій обговорюємо під час підготовки.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary><span data-i18n="faq_4_q">Який ритм потрібен для участі?</span><span class="plus" aria-hidden="true"></span></summary>
+          <p data-i18n="faq_4_a">Поточний формат передбачає регулярну роботу: орієнтир — близько трьох з половиною годин ефірів на день, шість днів на тиждень, а також зв’язок із ментором. Деталі графіка обговорюються особисто.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary><span data-i18n="faq_5_q">Чи можна поєднувати з навчанням або основною роботою?</span><span class="plus" aria-hidden="true"></span></summary>
+          <p data-i18n="faq_5_a">Так, якщо твій графік дозволяє зберігати регулярність і дотримуватися погодженого ритму. Краще заздалегідь обговорити свою ситуацію в Telegram.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary><span data-i18n="faq_6_q">Кому підходить ALive?</span><span class="plus" aria-hidden="true"></span></summary>
+          <p data-i18n="faq_6_a">Дівчатам, які хочуть розвиватися в TikTok Live, готові працювати регулярно та зараз не співпрацюють з іншим агентством прямих трансляцій.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary><span data-i18n="faq_7_q">Як почати?</span><span class="plus" aria-hidden="true"></span></summary>
+          <p data-i18n="faq_7_a">Напиши <a href="https://t.me/hr_alive" target="_blank" rel="noopener noreferrer">@hr_alive</a> у Telegram, коротко розкажи про себе та додай посилання на TikTok, якщо профіль уже існує.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <img class="cta-watermark" src="assets/alive-brand.webp" alt="" aria-hidden="true">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="contact_eyebrow">ТВІЙ НАСТУПНИЙ КРОК</span></p>
+        <h2 data-i18n="contact_title">Готова вийти в ефір не сама?</h2>
+        <p data-i18n="contact_text">Напиши @hr_alive у Telegram. Розкажи кілька слів про себе та надішли посилання на TikTok, якщо акаунт уже є. Почнемо зі звичайної розмови.</p>
+
+        <div class="contact-switch" role="group" aria-label="Спосіб звʼязку">
+          <button type="button" class="contact-switch-btn is-active" data-mode="telegram" data-i18n="telegram_write">Написати в Telegram</button>
+          <button type="button" class="contact-switch-btn" data-mode="form" data-i18n="contact_mode_form">Заповнити форму</button>
+        </div>
+
+        <div class="contact-panel" data-panel="telegram">
+          <a href="https://t.me/hr_alive" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.4 3.3 18.2 19c-.2 1.1-.9 1.4-1.8.9l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L5.7 12.8.9 11.3c-1-.3-1.1-1 .2-1.5L20 2.5c.9-.3 1.7.2 1.4.8Z"/></svg>
+            <span data-i18n="contact_cta">Написати @hr_alive</span>
+          </a>
+          <small data-i18n="contact_small">Дані нікуди не зберігаються — повідомлення йде напряму в Telegram.</small>
+        </div>
+
+        <form class="contact-panel contact-form" data-panel="form" id="contactForm" hidden novalidate>
+          <div class="form-field">
+            <label for="cfName" data-i18n="form_name_label">Ім’я</label>
+            <input id="cfName" name="name" type="text" required data-i18n-placeholder="form_name_placeholder" placeholder="Як тебе звати">
+          </div>
+          <div class="form-field">
+            <label for="cfTelegram" data-i18n="form_telegram_label">Telegram</label>
+            <input id="cfTelegram" name="telegram" type="text" required data-i18n-placeholder="form_telegram_placeholder" placeholder="@нік у Telegram">
+          </div>
+          <div class="form-field">
+            <label for="cfPhone" data-i18n="form_phone_label">Номер телефону (необов’язково)</label>
+            <input id="cfPhone" name="phone" type="tel" data-i18n-placeholder="form_phone_placeholder" placeholder="+380...">
+          </div>
+          <div class="form-field">
+            <label for="cfMessage" data-i18n="form_message_label">Коротко про себе (необов’язково)</label>
+            <textarea id="cfMessage" name="message" rows="3" data-i18n-placeholder="form_message_placeholder" placeholder="Досвід, коли готова почати, будь-що важливе"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;" id="cfSubmitBtn">
+            <span data-i18n="form_submit">Надіслати заявку</span>
+          </button>
+          <small data-i18n="form_note">Ми отримаємо заявку і самі напишемо тобі в Telegram.</small>
+        </form>
+        <div class="contact-panel contact-form-success" data-panel="form-success" id="formSuccess" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
+          <p data-i18n="form_success_title">Дякуємо! Заявку надіслано.</p>
+          <small data-i18n="form_success_text">Ми зв’яжемось з тобою в Telegram найближчим часом.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col" style="min-width:220px;">
+          <div class="footer-brand">
+            <img class="footer-brand-mark" src="assets/alive-brand.webp" alt="Логотип ALive">
+            <div>
+              <p style="color:var(--text-0);font-weight:600;">ALive</p>
+              <p style="font-size:0.82rem;" data-i18n="footer_tagline">Команда для дівчат у TikTok Live</p>
+            </div>
+          </div>
+        </div>
+        <nav class="footer-nav" aria-label="Навігація в підвалі">
+          <a href="#about" data-i18n="nav_about">Про нас</a>
+          <a href="#cases" data-i18n="nav_cases">Кейси</a>
+          <a href="#journey" data-i18n="nav_journey">Як почати</a>
+          <a href="#community" data-i18n="nav_community">Не сама в ефірі</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <div class="footer-contact">
+          <span class="footer-label" data-i18n="footer_start">Почати розмову</span>
+          <a href="https://t.me/hr_alive" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.4 3.3 18.2 19c-.2 1.1-.9 1.4-1.8.9l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L5.7 12.8.9 11.3c-1-.3-1.1-1 .2-1.5L20 2.5c.9-.3 1.7.2 1.4.8Z"/></svg>
+            @hr_alive
+          </a>
+          <a href="https://www.instagram.com/alive.tiktok" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            Instagram ALive
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer_rights">© 2026 ALive. Усі права захищені.</span>
+        <span>TikTok Live · ALive</span>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<div class="mobile-sticky" id="mobileSticky">
+  <a href="#contact" class="btn btn-primary">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+    <span data-i18n="cta_connect">Зв’язатися</span>
+  </a>
+</div>
+
+<button type="button" class="scroll-top" id="scrollTopBtn" aria-label="Прокрутити вгору">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 12);
+    scrollTopBtn.classList.toggle('is-visible', window.scrollY > 500);
+  });
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  const burger = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    const isOpen = mobileMenu.style.display === 'block';
+    mobileMenu.style.display = isOpen ? 'none' : 'block';
+    burger.setAttribute('aria-expanded', String(!isOpen));
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.style.display = 'none';
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  const translations = {
+    uk: {
+      meta_title: "ALive — команда для дівчат у TikTok Live",
+      meta_description: "ALive допомагає підготувати профіль, освоїти механіку TikTok Live та розвиватися разом із ментором і командою. Зв’язок напряму в Telegram.",
+      nav_about: "Про нас",
+      nav_journey: "Як почати",
+      nav_community: "Не сама в ефірі",
+      nav_cases: "Кейси",
+      telegram_write: "Написати в Telegram",
+      cta_connect: "Зв’язатися",
+      hero_title_1: 'Виходь у <span class="grad">TikTok Live</span>.',
+      hero_title_2: "Рости не сама.",
+      hero_lead: "ALive допомагає підготувати профіль, освоїти механіку ефірів і розвиватися разом з особистим ментором та командою. Можна почати з нуля — головне, бути готовою діяти регулярно.",
+      hero_cta: "Почати розмову",
+      hero_secondary: "Подивитися, як усе влаштовано",
+      marquee_profile: "профіль",
+      marquee_live: "ефір",
+      marquee_delivery: "подача",
+      marquee_feedback: "зворотний зв’язок",
+      about_eyebrow: "ПРО НАС",
+      about_title: 'Команда поруч, поки ти знаходиш свою <span class="text-chrome">подачу.</span>',
+      about_copy: "ALive поєднує практику, зворотний зв’язок і живе оточення. Тут не потрібно спочатку ставати ідеальною — основу збирають разом із тобою, а кожен наступний ефір стає матеріалом для розвитку.",
+      path_start: "Старт",
+      path_finish: "Регулярні ефіри",
+      path_l1: "Профіль",
+      path_l2: "Перший ефір",
+      path_l3: "Ментор поруч",
+      journey_eyebrow: "ЯК ПОЧАТИ",
+      journey_title: "Від першого повідомлення — до першого впевненого ефіру",
+      journey_subtitle: "П’ять кроків, які проходить кожна дівчина в команді.",
+      journey_1_title: "Ти пишеш нам",
+      journey_1_text: 'Відкриваєш Telegram, пишеш <a href="https://t.me/hr_alive" target="_blank" rel="noopener noreferrer">@hr_alive</a> і коротко розповідаєш про себе. Якщо TikTok-профіль уже є — можеш одразу надіслати посилання.',
+      journey_2_title: "Знайомимося",
+      journey_2_text: "Обговорюємо твій досвід, очікування, доступний графік і відповідаємо на запитання про формат команди.",
+      journey_3_title: "Збираємо основу",
+      journey_3_text: "Налаштовуємо профіль, напрямок, подачу та базовий сценарій ефіру.",
+      journey_4_title: "Виходимо в live",
+      journey_4_text: "Переходимо до практики та розбираємо перші складні моменти разом із ментором.",
+      journey_5_title: "Аналізуємо та посилюємо",
+      journey_5_text: "Працюємо над утриманням уваги, упевненістю, взаємодією з аудиторією та стабільністю ефірів.",
+      fit_title: "Тобі до нас, якщо ти готова бути в процесі",
+      fit_intro: "Не шукаємо ідеальний старт. Важливіша готовність пробувати, слухати зворотний зв’язок і повертатися в ефір.",
+      fit_1: "Ти зараз не співпрацюєш з іншим агентством прямих трансляцій.",
+      fit_2: "Ти готова регулярно виходити в ефір і бути на зв’язку з ментором.",
+      fit_3: "Ти відкрита до зворотного зв’язку, навчання та спілкування з аудиторією.",
+      fit_note: "<strong>Не впевнена, чи підходить тобі формат?</strong> Напиши @hr_alive — обговоримо особисто.",
+      telegram_ask: "Поставити запитання",
+      community_eyebrow: "НЕ САМА В ЕФІРІ",
+      community_title: "Підтримка продовжується після кнопки «завершити live»",
+      community_intro: "Після ефіру залишаються запитання, сумніви та ідеї. В ALive їх не потрібно розбирати наодинці: поруч ментор і учасниці, які знають цей формат зсередини.",
+      community_1_title: "Можна запитати",
+      community_1_text: "Простір для запитань і складних ситуацій.",
+      community_2_title: "Можна розібрати",
+      community_2_text: "Зворотний зв’язок після ефіру.",
+      community_3_title: "Можна побачити інакше",
+      community_3_text: "Обмін підходами та досвідом усередині команди.",
+      cases_eyebrow: "КЕЙСИ",
+      cases_title: "Приклади шляху всередині ALive",
+      cases_intro: "Три формати, які виросли з нуля разом із командою. Імена та деталі — додаються під реальні кейси.",
+      case_tag_1: "[ніша: батли]",
+      case_tag_2: "[ніша: розмовний формат]",
+      case_tag_3: "[ніша: гумор / чат-шоу]",
+      case_name: "[Ім’я / нік]",
+      case_desc: "[Короткий опис шляху: з чого стартувала і якого результату досягла]",
+      case_note: "Плейсхолдери — заміни на реальні імена, ніші та результати, коли будуть готові перші кейси.",
+      faq_eyebrow: "FAQ",
+      faq_title: "Запитання перед першим повідомленням",
+      faq_intro: "Якщо твого запитання тут немає, напиши напряму в Telegram.",
+      faq_1_q: "Чи потрібен уже розкручений TikTok-акаунт?",
+      faq_1_a: "Ні. Почати можна з нового або невеликого акаунта. Команда допомагає вибудувати основу профілю та підготуватися до перших ефірів.",
+      faq_2_q: "Чи потрібен досвід стримінгу?",
+      faq_2_a: "Ні. Важливіша готовність навчатися, пробувати й регулярно застосовувати зворотний зв’язок на практиці.",
+      faq_3_q: "Що знадобиться для старту?",
+      faq_3_a: "Смартфон зі справною камерою, стабільний інтернет і місце, де можна спокійно проводити ефіри. Решту рекомендацій обговорюємо під час підготовки.",
+      faq_4_q: "Який ритм потрібен для участі?",
+      faq_4_a: "Поточний формат передбачає регулярну роботу: орієнтир — близько трьох з половиною годин ефірів на день, шість днів на тиждень, а також зв’язок із ментором. Деталі графіка обговорюються особисто.",
+      faq_5_q: "Чи можна поєднувати з навчанням або основною роботою?",
+      faq_5_a: "Так, якщо твій графік дозволяє зберігати регулярність і дотримуватися погодженого ритму. Краще заздалегідь обговорити свою ситуацію в Telegram.",
+      faq_6_q: "Кому підходить ALive?",
+      faq_6_a: "Дівчатам, які хочуть розвиватися в TikTok Live, готові працювати регулярно та зараз не співпрацюють з іншим агентством прямих трансляцій.",
+      faq_7_q: "Як почати?",
+      faq_7_a: 'Напиши <a href="https://t.me/hr_alive" target="_blank" rel="noopener noreferrer">@hr_alive</a> у Telegram, коротко розкажи про себе та додай посилання на TikTok, якщо профіль уже існує.',
+      contact_eyebrow: "ТВІЙ НАСТУПНИЙ КРОК",
+      contact_title: "Готова вийти в ефір не сама?",
+      contact_text: "Напиши @hr_alive у Telegram. Розкажи кілька слів про себе та надішли посилання на TikTok, якщо акаунт уже є. Почнемо зі звичайної розмови.",
+      contact_cta: "Написати @hr_alive",
+      contact_small: "Дані нікуди не зберігаються — повідомлення йде напряму в Telegram.",
+      contact_mode_form: "Заповнити форму",
+      form_name_label: "Ім’я",
+      form_name_placeholder: "Як тебе звати",
+      form_telegram_label: "Telegram",
+      form_telegram_placeholder: "@нік у Telegram",
+      form_phone_label: "Номер телефону (необов’язково)",
+      form_phone_placeholder: "+380...",
+      form_message_label: "Коротко про себе (необов’язково)",
+      form_message_placeholder: "Досвід, коли готова почати, будь-що важливе",
+      form_submit: "Надіслати заявку",
+      form_note: "Ми отримаємо заявку і самі напишемо тобі в Telegram.",
+      form_success_title: "Дякуємо! Заявку надіслано.",
+      form_success_text: "Ми зв’яжемось з тобою в Telegram найближчим часом.",
+      footer_tagline: "Команда для дівчат у TikTok Live",
+      footer_start: "Почати розмову",
+      footer_rights: "© 2026 ALive. Усі права захищені."
+    },
+    en: {
+      meta_title: "ALive — a team for girls on TikTok Live",
+      meta_description: "ALive helps you set up your profile, learn the mechanics of going live, and grow together with a personal mentor and team. Connect directly on Telegram.",
+      nav_about: "About",
+      nav_journey: "How to Start",
+      nav_community: "Not Alone on Stream",
+      nav_cases: "Cases",
+      telegram_write: "Message on Telegram",
+      cta_connect: "Get in touch",
+      hero_title_1: 'Go live on <span class="grad">TikTok Live</span>.',
+      hero_title_2: "Grow, not alone.",
+      hero_lead: "ALive helps you set up your profile, learn the mechanics of going live, and grow together with a personal mentor and team. You can start from zero — what matters is being ready to show up regularly.",
+      hero_cta: "Start a conversation",
+      hero_secondary: "See how it works",
+      marquee_profile: "profile",
+      marquee_live: "live",
+      marquee_delivery: "delivery",
+      marquee_feedback: "feedback",
+      about_eyebrow: "ABOUT",
+      about_title: 'The team is with you as you find your <span class="text-chrome">delivery.</span>',
+      about_copy: "ALive combines practice, feedback, and a real community. You don't need to be perfect from day one — the foundation is built together with you, and every next stream becomes material for growth.",
+      path_start: "Start",
+      path_finish: "Regular streams",
+      path_l1: "Profile",
+      path_l2: "First stream",
+      path_l3: "Mentor by your side",
+      journey_eyebrow: "HOW TO START",
+      journey_title: "From your first message to your first confident stream",
+      journey_subtitle: "Five steps every girl on the team goes through.",
+      journey_1_title: "You message us",
+      journey_1_text: 'Open Telegram, message <a href="https://t.me/hr_alive" target="_blank" rel="noopener noreferrer">@hr_alive</a> and briefly tell us about yourself. If you already have a TikTok profile, feel free to send the link right away.',
+      journey_2_title: "We get to know each other",
+      journey_2_text: "We discuss your experience, expectations, available schedule, and answer your questions about how the team works.",
+      journey_3_title: "We build the foundation",
+      journey_3_text: "We set up your profile, direction, delivery, and a basic stream script.",
+      journey_4_title: "You go live",
+      journey_4_text: "We move to practice and work through the first tricky moments together with your mentor.",
+      journey_5_title: "We analyze and strengthen",
+      journey_5_text: "We work on holding attention, confidence, audience interaction, and stream consistency.",
+      fit_title: "This is for you if you're ready to be in the process",
+      fit_intro: "We're not looking for a perfect start. What matters more is being willing to try, listen to feedback, and keep coming back to the stream.",
+      fit_1: "You're not currently working with another livestreaming agency.",
+      fit_2: "You're ready to stream regularly and stay in touch with your mentor.",
+      fit_3: "You're open to feedback, learning, and engaging with your audience.",
+      fit_note: "<strong>Not sure if this format is for you?</strong> Message @hr_alive — we'll talk it through personally.",
+      telegram_ask: "Ask a question",
+      community_eyebrow: "NOT ALONE ON STREAM",
+      community_title: "Support continues after you tap “end live”",
+      community_intro: "Questions, doubts, and ideas remain after the stream. At ALive you don't have to work through them alone: your mentor and other members who know this format from the inside are right there.",
+      community_1_title: "You can ask",
+      community_1_text: "A space for questions and tricky situations.",
+      community_2_title: "You can review",
+      community_2_text: "Feedback after the stream.",
+      community_3_title: "You can see it differently",
+      community_3_text: "Exchanging approaches and experience within the team.",
+      cases_eyebrow: "CASES",
+      cases_title: "Examples of the journey inside ALive",
+      cases_intro: "Three formats that grew from zero together with the team. Names and details will be added once real cases are ready.",
+      case_tag_1: "[niche: battles]",
+      case_tag_2: "[niche: talk format]",
+      case_tag_3: "[niche: comedy / chat show]",
+      case_name: "[Name / handle]",
+      case_desc: "[Short description of the journey: where she started and what result she achieved]",
+      case_note: "Placeholders — replace with real names, niches, and results once the first cases are ready.",
+      faq_eyebrow: "FAQ",
+      faq_title: "Questions before your first message",
+      faq_intro: "If your question isn't here, message us directly on Telegram.",
+      faq_1_q: "Do I need an already-grown TikTok account?",
+      faq_1_a: "No. You can start with a new or small account. The team helps you build the foundation of your profile and get ready for your first streams.",
+      faq_2_q: "Do I need streaming experience?",
+      faq_2_a: "No. What matters more is being willing to learn, try things out, and regularly apply feedback in practice.",
+      faq_3_q: "What do I need to get started?",
+      faq_3_a: "A smartphone with a working camera, stable internet, and a place where you can stream calmly. We'll cover the rest of the recommendations during preparation.",
+      faq_4_q: "What rhythm is required to participate?",
+      faq_4_a: "The current format involves regular work: roughly around three and a half hours of streaming a day, six days a week, plus staying in touch with your mentor. Schedule details are discussed individually.",
+      faq_5_q: "Can I combine this with studies or a main job?",
+      faq_5_a: "Yes, if your schedule allows you to stay consistent and keep to the agreed rhythm. It's best to discuss your situation on Telegram in advance.",
+      faq_6_q: "Who is ALive for?",
+      faq_6_a: "Girls who want to grow in TikTok Live, are ready to work regularly, and are not currently working with another livestreaming agency.",
+      faq_7_q: "How do I start?",
+      faq_7_a: 'Message <a href="https://t.me/hr_alive" target="_blank" rel="noopener noreferrer">@hr_alive</a> on Telegram, briefly tell us about yourself, and add your TikTok link if you already have a profile.',
+      contact_eyebrow: "YOUR NEXT STEP",
+      contact_title: "Ready to go live, not alone?",
+      contact_text: "Message @hr_alive on Telegram. Tell us a bit about yourself and send your TikTok link if you already have an account. We'll start with a simple conversation.",
+      contact_cta: "Message @hr_alive",
+      contact_small: "Nothing is stored — your message goes straight to Telegram.",
+      contact_mode_form: "Fill out a form",
+      form_name_label: "Name",
+      form_name_placeholder: "Your name",
+      form_telegram_label: "Telegram",
+      form_telegram_placeholder: "@handle on Telegram",
+      form_phone_label: "Phone number (optional)",
+      form_phone_placeholder: "+1...",
+      form_message_label: "A bit about yourself (optional)",
+      form_message_placeholder: "Experience, when you're ready to start, anything relevant",
+      form_submit: "Send request",
+      form_note: "We'll receive your request and message you on Telegram ourselves.",
+      form_success_title: "Thank you! Request sent.",
+      form_success_text: "We'll reach out to you on Telegram soon.",
+      footer_tagline: "A team for girls on TikTok Live",
+      footer_start: "Start a conversation",
+      footer_rights: "© 2026 ALive. All rights reserved."
+    }
+  };
+
+  function setLanguage(lang) {
+    if (!translations[lang]) return;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang][key] !== undefined) el.innerHTML = translations[lang][key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (translations[lang][key] !== undefined) el.setAttribute('placeholder', translations[lang][key]);
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('is-active', btn.dataset.lang === lang);
+    });
+    document.title = translations[lang].meta_title;
+    const metaDesc = document.getElementById('metaDescription');
+    if (metaDesc) metaDesc.setAttribute('content', translations[lang].meta_description);
+    localStorage.setItem('alive-lang', lang);
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+  });
+
+  setLanguage(localStorage.getItem('alive-lang') || 'uk');
+
+  const contactSwitchBtns = document.querySelectorAll('.contact-switch-btn');
+  const contactPanels = document.querySelectorAll('.contact-panel');
+  contactSwitchBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      contactSwitchBtns.forEach(b => b.classList.toggle('is-active', b === btn));
+      const mode = btn.dataset.mode;
+      contactPanels.forEach(p => { p.hidden = p.dataset.panel !== mode; });
+    });
+  });
+
+  const contactForm = document.getElementById('contactForm');
+  const formSuccess = document.getElementById('formSuccess');
+  const cfSubmitBtn = document.getElementById('cfSubmitBtn');
+  const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScA3IlOzQKXGpUveMc0CJqpP-JifDqLoUvBviSrGlNnCW06Ig/formResponse';
+  const GOOGLE_FORM_FIELDS = {
+    name: 'entry.625826675',
+    telegram: 'entry.672515188',
+    phone: 'entry.2091207153',
+    message: 'entry.1211036861'
+  };
+
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = contactForm.name.value.trim();
+    const telegram = contactForm.telegram.value.trim();
+    const phone = contactForm.phone.value.trim();
+    const message = contactForm.message.value.trim();
+    if (!name || !telegram) return;
+
+    const data = new FormData();
+    data.append(GOOGLE_FORM_FIELDS.name, name);
+    data.append(GOOGLE_FORM_FIELDS.telegram, telegram);
+    data.append(GOOGLE_FORM_FIELDS.phone, phone);
+    data.append(GOOGLE_FORM_FIELDS.message, message);
+
+    cfSubmitBtn.disabled = true;
+
+    fetch(GOOGLE_FORM_URL, { method: 'POST', mode: 'no-cors', body: data })
+      .then(showFormSuccess)
+      .catch(showFormSuccess)
+      .finally(() => { cfSubmitBtn.disabled = false; });
+  });
+
+  function showFormSuccess() {
+    contactForm.hidden = true;
+    formSuccess.hidden = false;
+    contactForm.reset();
+  }
+</script>
+</body>
+</html>
