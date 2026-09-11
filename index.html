@@ -405,21 +405,52 @@
   /* CASES */
   .cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
   .case-card{
-    border-radius:var(--radius);overflow:hidden;background:var(--bg-1);border:1px solid var(--line);
+    position:relative;display:block;width:100%;aspect-ratio:3/4;
+    border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);
+    background:var(--bg-1);text-align:left;font-family:inherit;padding:0;
   }
-  .case-thumb{
-    height:220px;background:linear-gradient(135deg,var(--bg-2),var(--bg-0));
-    position:relative;display:flex;align-items:center;justify-content:center;
+  .case-card:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;}
+  .case-photo-wrap{
+    position:absolute;inset:0;
+    background:linear-gradient(135deg,var(--bg-2),var(--bg-0));
+    display:flex;align-items:center;justify-content:center;
   }
-  .case-thumb svg{width:44px;height:44px;color:var(--magenta);opacity:.8;}
-  .case-thumb img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;}
-  .case-body{padding:20px;}
-  .case-tag{
-    display:inline-block;font-size:0.76rem;color:var(--cyan);
-    border:1px solid rgba(245,220,239,.3);padding:3px 10px;border-radius:100px;margin-bottom:10px;
+  .case-photo-wrap svg{width:44px;height:44px;color:var(--magenta);opacity:.8;}
+  .case-photo-wrap img{
+    width:100%;height:100%;object-fit:cover;object-position:50% 18%;
+    transition:transform .5s ease;
   }
-  .case-body h3{font-size:1.02rem;font-weight:600;margin-bottom:6px;}
-  .case-body p{color:var(--text-1);font-size:0.92rem;}
+  .case-card:hover .case-photo-wrap img,
+  .case-card.is-active .case-photo-wrap img{transform:scale(1.05);}
+  .case-earn{
+    position:absolute;top:14px;left:14px;z-index:2;
+    padding:6px 14px;border-radius:100px;
+    background:rgba(8,6,10,0.6);backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,.16);
+    font-family:'Unbounded',sans-serif;font-weight:700;font-size:0.82rem;color:var(--text-0);
+  }
+  .case-info{
+    position:absolute;inset:0;z-index:1;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    padding:18px;
+    background:linear-gradient(to bottom, transparent 0%, transparent 45%, rgba(8,6,10,.55) 72%, rgba(8,6,10,.92) 100%);
+    transition:background .35s ease;
+  }
+  .case-card:hover .case-info,
+  .case-card.is-active .case-info{
+    background:linear-gradient(to bottom, rgba(8,6,10,.1) 0%, rgba(8,6,10,.8) 38%, rgba(8,6,10,.96) 100%);
+  }
+  .case-name{font-family:'Unbounded',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;}
+  .case-nick{display:block;margin-top:2px;font-size:0.82rem;color:var(--text-1);}
+  .case-detail{
+    margin-top:0;max-height:0;opacity:0;overflow:hidden;
+    color:var(--text-1);font-size:0.82rem;line-height:1.55;
+    transition:max-height .4s ease, opacity .3s ease .05s, margin-top .4s ease;
+  }
+  .case-card:hover .case-detail,
+  .case-card.is-active .case-detail{
+    margin-top:10px;max-height:220px;opacity:1;overflow-y:auto;
+  }
 
   /* FAQ */
   .faq-list{display:flex;flex-direction:column;gap:12px;}
@@ -708,30 +739,33 @@
         <p data-i18n="cases_intro">Реальні результати дівчат усередині команди ALive.</p>
       </div>
       <div class="cases-grid">
-        <div class="case-card">
-          <div class="case-thumb" id="caseThumb1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="3"/><path d="M21 8.5v7L17 13v-2l4-2.5Z"/></svg></div>
-          <div class="case-body">
-            <span class="case-tag" data-i18n="case_tag_1">$5000+/міс</span>
-            <h3 data-i18n="case_name_1">Рутенія</h3>
-            <p data-i18n="case_desc_1">Ще у квітні ми знайшли одна одну на сайті пошуку роботи. 👀 Вона шукала вакансію баристи, а ми — дівчат, у яких горять очі пробувати щось нове.<br><br>Вже у травні її результат — $5000+ 💸<br><br>Це не про «легкі гроші» чи випадковість. Це про ефіри, стабільність, особистий розвиток, роботу над помилками, емоції, спілкування з аудиторією та підтримку команди поруч. 🤍</p>
+        <button type="button" class="case-card" id="caseCard1">
+          <div class="case-photo-wrap" id="caseThumb1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="3"/><path d="M21 8.5v7L17 13v-2l4-2.5Z"/></svg></div>
+          <span class="case-earn" data-i18n="case_tag_1">$5000+/міс</span>
+          <div class="case-info">
+            <h3 class="case-name" data-i18n="case_name_1">Рутенія</h3>
+            <span class="case-nick" data-i18n="case_nick_placeholder">[@нік]</span>
+            <p class="case-detail" data-i18n="case_desc_1">Ще у квітні ми знайшли одна одну на сайті пошуку роботи. 👀 Вона шукала вакансію баристи, а ми — дівчат, у яких горять очі пробувати щось нове.<br><br>Вже у травні її результат — $5000+ 💸<br><br>Це не про «легкі гроші» чи випадковість. Це про ефіри, стабільність, особистий розвиток, роботу над помилками, емоції, спілкування з аудиторією та підтримку команди поруч. 🤍</p>
           </div>
-        </div>
-        <div class="case-card">
-          <div class="case-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16v12H8l-4 4Z"/></svg></div>
-          <div class="case-body">
-            <span class="case-tag" data-i18n="case_tag_2">$1500/міс</span>
-            <h3 data-i18n="case_name_2">Ліза</h3>
-            <p data-i18n="case_desc_2">Ліза почала стримити близько місяця тому. 📈 Перший гарний результат прийшов буквально за перший тиждень.<br><br>Завжди слухає свого ментора й виконує всі рекомендації — і це видно за результатом: $1500 заробітку вже в перший місяць.</p>
+        </button>
+        <button type="button" class="case-card" id="caseCard2">
+          <div class="case-photo-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16v12H8l-4 4Z"/></svg></div>
+          <span class="case-earn" data-i18n="case_tag_2">$1500/міс</span>
+          <div class="case-info">
+            <h3 class="case-name" data-i18n="case_name_2">Ліза</h3>
+            <span class="case-nick" data-i18n="case_nick_placeholder">[@нік]</span>
+            <p class="case-detail" data-i18n="case_desc_2">Ліза почала стримити близько місяця тому. 📈 Перший гарний результат прийшов буквально за перший тиждень.<br><br>Завжди слухає свого ментора й виконує всі рекомендації — і це видно за результатом: $1500 заробітку вже в перший місяць.</p>
           </div>
-        </div>
-        <div class="case-card">
-          <div class="case-thumb" id="caseThumb3"><img src="assets/case-vika.jpg" alt="Віка" loading="lazy"></div>
-          <div class="case-body">
-            <span class="case-tag" data-i18n="case_tag_3">$2000/міс</span>
-            <h3 data-i18n="case_name_3">Віка</h3>
-            <p data-i18n="case_desc_3">Віка з Ірландії — одразу яскраво включилась у процес: дуже позитивна і по-справжньому любить стримити. 🌟<br><br>Ефіри змінили її життя: за перший місяць заробила $2000, а зараз активно веде ефіри й постійно покращує їх якість разом із нами.</p>
+        </button>
+        <button type="button" class="case-card" id="caseCard3">
+          <div class="case-photo-wrap" id="caseThumb3"><img src="assets/case-vika.jpg" alt="Віка"></div>
+          <span class="case-earn" data-i18n="case_tag_3">$2000/міс</span>
+          <div class="case-info">
+            <h3 class="case-name" data-i18n="case_name_3">Віка</h3>
+            <span class="case-nick" data-i18n="case_nick_placeholder">[@нік]</span>
+            <p class="case-detail" data-i18n="case_desc_3">Віка з Ірландії — одразу яскраво включилась у процес: дуже позитивна і по-справжньому любить стримити. 🌟<br><br>Ефіри змінили її життя: за перший місяць заробила $2000, а зараз активно веде ефіри й постійно покращує їх якість разом із нами.</p>
           </div>
-        </div>
+        </button>
       </div>
     </div>
   </section>
@@ -1057,6 +1091,7 @@
       cases_eyebrow: "КЕЙСИ",
       cases_title: "Приклади шляху всередині ALive",
       cases_intro: "Реальні результати дівчат усередині команди ALive.",
+      case_nick_placeholder: "[@нік]",
       case_tag_1: "$5000+/міс",
       case_name_1: "Рутенія",
       case_desc_1: "Ще у квітні ми знайшли одна одну на сайті пошуку роботи. 👀 Вона шукала вакансію баристи, а ми — дівчат, у яких горять очі пробувати щось нове.<br><br>Вже у травні її результат — $5000+ 💸<br><br>Це не про «легкі гроші» чи випадковість. Це про ефіри, стабільність, особистий розвиток, роботу над помилками, емоції, спілкування з аудиторією та підтримку команди поруч. 🤍",
@@ -1165,6 +1200,7 @@
       cases_eyebrow: "CASES",
       cases_title: "Examples of the journey inside ALive",
       cases_intro: "Real results from girls inside the ALive team.",
+      case_nick_placeholder: "[@handle]",
       case_tag_1: "$5000+/mo",
       case_name_1: "Ruteniia",
       case_desc_1: "We found each other back in April on a job-search site. 👀 She was looking for a barista job, and we were looking for girls with fire in their eyes, ready to try something new.<br><br>By May, her result — $5000+ 💸<br><br>This isn't about \"easy money\" or luck. It's about streams, consistency, personal growth, fixing mistakes, emotions, connecting with an audience, and the support of a team right beside you. 🤍",
@@ -1240,6 +1276,15 @@
   });
 
   setLanguage(localStorage.getItem('alive-lang') || 'uk');
+
+  const caseCards = document.querySelectorAll('.case-card');
+  caseCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const willOpen = !card.classList.contains('is-active');
+      caseCards.forEach(c => c.classList.remove('is-active'));
+      if (willOpen) card.classList.add('is-active');
+    });
+  });
 
   const contactSwitchBtns = document.querySelectorAll('.contact-switch-btn');
   const contactPanels = document.querySelectorAll('.contact-panel');
