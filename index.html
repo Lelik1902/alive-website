@@ -408,10 +408,11 @@
     border-radius:var(--radius);overflow:hidden;background:var(--bg-1);border:1px solid var(--line);
   }
   .case-thumb{
-    height:150px;background:linear-gradient(135deg,var(--bg-2),var(--bg-0));
+    height:220px;background:linear-gradient(135deg,var(--bg-2),var(--bg-0));
     position:relative;display:flex;align-items:center;justify-content:center;
   }
   .case-thumb svg{width:44px;height:44px;color:var(--magenta);opacity:.8;}
+  .case-thumb img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;}
   .case-body{padding:20px;}
   .case-tag{
     display:inline-block;font-size:0.76rem;color:var(--cyan);
@@ -724,7 +725,7 @@
           </div>
         </div>
         <div class="case-card">
-          <div class="case-thumb" id="caseThumb3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l2.6 5.9L21 9.6l-4.5 4.2L17.6 21 12 17.6 6.4 21l1.1-7.2L3 9.6l6.4-.7L12 3Z"/></svg></div>
+          <div class="case-thumb" id="caseThumb3"><img src="assets/case-vika.jpg" alt="Віка" loading="lazy"></div>
           <div class="case-body">
             <span class="case-tag" data-i18n="case_tag_3">$2000/міс</span>
             <h3 data-i18n="case_name_3">Віка</h3>
