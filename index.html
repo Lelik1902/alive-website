@@ -423,13 +423,6 @@
   }
   .case-photo{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;flex-shrink:0;background:var(--bg-1);}
   .case-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 24%;display:block;}
-  .case-tag{
-    position:absolute;top:14px;right:14px;z-index:2;
-    display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;
-    background:rgba(20,12,20,.55);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.18);
-    font-size:0.7rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#fff;
-  }
-  .case-tag svg{width:13px;height:13px;color:var(--magenta);flex-shrink:0;}
   .case-body{display:flex;flex-direction:column;flex:1;padding:22px;}
   .case-name{font-family:'Unbounded',sans-serif;font-size:1.12rem;font-weight:700;color:var(--text-0);margin-bottom:12px;}
   .case-stats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
@@ -750,21 +743,19 @@
         <div class="case-card" id="caseCard1">
           <div class="case-photo">
             <img src="assets/case-rutenia.jpg" alt="Рутенія">
-            <span class="case-tag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c.9 3.6 2.1 4.8 5.7 5.7-3.6.9-4.8 2.1-5.7 5.7-.9-3.6-2.1-4.8-5.7-5.7C9.9 6.8 11.1 5.6 12 2Z"/></svg><span data-i18n="case_flavor_1">Нові можливості</span></span>
           </div>
           <div class="case-body">
             <h3 class="case-name" data-i18n="case_name_1">Рутенія</h3>
             <div class="case-stats">
               <span class="case-stat is-earn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg><span data-i18n="case_tag_1">$5000+/міс</span></span>
             </div>
-            <p class="case-detail" data-i18n="case_desc_1">Ще у квітні ми знайшли одна одну на сайті пошуку роботи. 👀 Вона шукала вакансію баристи, а ми — дівчат, у яких горять очі пробувати щось нове.<br><br>Вже у травні її результат — $5000+ 💸<br><br>Це не про «легкі гроші» чи випадковість. Це про ефіри, стабільність, особистий розвиток, роботу над помилками, емоції, спілкування з аудиторією та підтримку команди поруч. 🤍</p>
-            <a class="case-profile-btn" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 3h-3.3v12.4a2.9 2.9 0 1 1-2.1-2.8v-3.3a6.2 6.2 0 1 0 5.4 6.2V9.6a7.6 7.6 0 0 0 4.3 1.3V7.6a4.3 4.3 0 0 1-4.3-4.3Z"/></svg><span data-i18n="case_profile_btn">Відкрити профіль</span></a>
+            <p class="case-detail" data-i18n="case_desc_1">Ще у квітні ми знайшли одна одну на сайті пошуку роботи. 👀 Вона шукала вакансію баристи, а ми — дівчат, у яких горять очі пробувати щось нове.<br><br>Вже у травні її результат — $5000+ 💸 Це про ефіри, стабільність і підтримку команди поруч. 🤍</p>
+            <a class="case-profile-btn" href="https://www.tiktok.com/@ruteniiaxo" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 3h-3.3v12.4a2.9 2.9 0 1 1-2.1-2.8v-3.3a6.2 6.2 0 1 0 5.4 6.2V9.6a7.6 7.6 0 0 0 4.3 1.3V7.6a4.3 4.3 0 0 1-4.3-4.3Z"/></svg><span data-i18n="case_profile_btn">Відкрити профіль</span></a>
           </div>
         </div>
         <div class="case-card" id="caseCard2">
           <div class="case-photo">
             <img src="assets/case-liza.jpg" alt="Ліза">
-            <span class="case-tag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c.9 3.6 2.1 4.8 5.7 5.7-3.6.9-4.8 2.1-5.7 5.7-.9-3.6-2.1-4.8-5.7-5.7C9.9 6.8 11.1 5.6 12 2Z"/></svg><span data-i18n="case_flavor_2">Стабільний ріст</span></span>
           </div>
           <div class="case-body">
             <h3 class="case-name" data-i18n="case_name_2">Ліза</h3>
@@ -772,13 +763,12 @@
               <span class="case-stat is-earn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg><span data-i18n="case_tag_2">$1500/міс</span></span>
             </div>
             <p class="case-detail" data-i18n="case_desc_2">Ліза почала стримити близько місяця тому. 📈 Перший гарний результат прийшов буквально за перший тиждень.<br><br>Завжди слухає свого ментора й виконує всі рекомендації — і це видно за результатом: $1500 заробітку вже в перший місяць.</p>
-            <a class="case-profile-btn" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 3h-3.3v12.4a2.9 2.9 0 1 1-2.1-2.8v-3.3a6.2 6.2 0 1 0 5.4 6.2V9.6a7.6 7.6 0 0 0 4.3 1.3V7.6a4.3 4.3 0 0 1-4.3-4.3Z"/></svg><span data-i18n="case_profile_btn">Відкрити профіль</span></a>
+            <a class="case-profile-btn" href="https://www.tiktok.com/@neeligeo.liza" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 3h-3.3v12.4a2.9 2.9 0 1 1-2.1-2.8v-3.3a6.2 6.2 0 1 0 5.4 6.2V9.6a7.6 7.6 0 0 0 4.3 1.3V7.6a4.3 4.3 0 0 1-4.3-4.3Z"/></svg><span data-i18n="case_profile_btn">Відкрити профіль</span></a>
           </div>
         </div>
         <div class="case-card" id="caseCard3">
           <div class="case-photo">
             <img src="assets/case-vika.jpg" alt="Віка">
-            <span class="case-tag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c.9 3.6 2.1 4.8 5.7 5.7-3.6.9-4.8 2.1-5.7 5.7-.9-3.6-2.1-4.8-5.7-5.7C9.9 6.8 11.1 5.6 12 2Z"/></svg><span data-i18n="case_flavor_3">Яскрава історія</span></span>
           </div>
           <div class="case-body">
             <h3 class="case-name" data-i18n="case_name_3">Віка</h3>
@@ -786,7 +776,7 @@
               <span class="case-stat is-earn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg><span data-i18n="case_tag_3">$2000/міс</span></span>
             </div>
             <p class="case-detail" data-i18n="case_desc_3">Віка з Ірландії — одразу яскраво включилась у процес: дуже позитивна і по-справжньому любить стримити. 🌟<br><br>Ефіри змінили її життя: за перший місяць заробила $2000, а зараз активно веде ефіри й постійно покращує їх якість разом із нами.</p>
-            <a class="case-profile-btn" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 3h-3.3v12.4a2.9 2.9 0 1 1-2.1-2.8v-3.3a6.2 6.2 0 1 0 5.4 6.2V9.6a7.6 7.6 0 0 0 4.3 1.3V7.6a4.3 4.3 0 0 1-4.3-4.3Z"/></svg><span data-i18n="case_profile_btn">Відкрити профіль</span></a>
+            <a class="case-profile-btn" href="https://www.tiktok.com/@baby.vikky_" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 3h-3.3v12.4a2.9 2.9 0 1 1-2.1-2.8v-3.3a6.2 6.2 0 1 0 5.4 6.2V9.6a7.6 7.6 0 0 0 4.3 1.3V7.6a4.3 4.3 0 0 1-4.3-4.3Z"/></svg><span data-i18n="case_profile_btn">Відкрити профіль</span></a>
           </div>
         </div>
       </div>
@@ -1116,15 +1106,12 @@
       cases_intro: "Реальні результати дівчат усередині команди ALive.",
       cases_note: "Більше, ніж робота ♡",
       case_profile_btn: "Відкрити профіль",
-      case_flavor_1: "Нові можливості",
       case_tag_1: "$5000+/міс",
       case_name_1: "Рутенія",
-      case_desc_1: "Ще у квітні ми знайшли одна одну на сайті пошуку роботи. 👀 Вона шукала вакансію баристи, а ми — дівчат, у яких горять очі пробувати щось нове.<br><br>Вже у травні її результат — $5000+ 💸<br><br>Це не про «легкі гроші» чи випадковість. Це про ефіри, стабільність, особистий розвиток, роботу над помилками, емоції, спілкування з аудиторією та підтримку команди поруч. 🤍",
-      case_flavor_2: "Стабільний ріст",
+      case_desc_1: "Ще у квітні ми знайшли одна одну на сайті пошуку роботи. 👀 Вона шукала вакансію баристи, а ми — дівчат, у яких горять очі пробувати щось нове.<br><br>Вже у травні її результат — $5000+ 💸 Це про ефіри, стабільність і підтримку команди поруч. 🤍",
       case_tag_2: "$1500/міс",
       case_name_2: "Ліза",
       case_desc_2: "Ліза почала стримити близько місяця тому. 📈 Перший гарний результат прийшов буквально за перший тиждень.<br><br>Завжди слухає свого ментора й виконує всі рекомендації — і це видно за результатом: $1500 заробітку вже в перший місяць.",
-      case_flavor_3: "Яскрава історія",
       case_tag_3: "$2000/міс",
       case_name_3: "Віка",
       case_desc_3: "Віка з Ірландії — одразу яскраво включилась у процес: дуже позитивна і по-справжньому любить стримити. 🌟<br><br>Ефіри змінили її життя: за перший місяць заробила $2000, а зараз активно веде ефіри й постійно покращує їх якість разом із нами.",
@@ -1229,15 +1216,12 @@
       cases_intro: "Real results from girls inside the ALive team.",
       cases_note: "More than just a job ♡",
       case_profile_btn: "Open profile",
-      case_flavor_1: "New opportunities",
       case_tag_1: "$5000+/mo",
       case_name_1: "Ruteniia",
-      case_desc_1: "We found each other back in April on a job-search site. 👀 She was looking for a barista job, and we were looking for girls with fire in their eyes, ready to try something new.<br><br>By May, her result — $5000+ 💸<br><br>This isn't about \"easy money\" or luck. It's about streams, consistency, personal growth, fixing mistakes, emotions, connecting with an audience, and the support of a team right beside you. 🤍",
-      case_flavor_2: "Steady growth",
+      case_desc_1: "We found each other back in April on a job-search site. 👀 She was looking for a barista job, and we were looking for girls with fire in their eyes, ready to try something new.<br><br>By May, her result — $5000+ 💸 It's about streams, consistency, and the support of a team right beside you. 🤍",
       case_tag_2: "$1500/mo",
       case_name_2: "Liza",
       case_desc_2: "Liza started streaming about a month ago. 📈 Her first solid result came within the very first week.<br><br>She always listens to her mentor and follows every recommendation — and it shows: $1500 earned in her very first month.",
-      case_flavor_3: "A bright story",
       case_tag_3: "$2000/mo",
       case_name_3: "Vika",
       case_desc_3: "Vika, from Ireland, jumped in right away — bright, positive, and genuinely loves streaming. 🌟<br><br>Streaming changed her life: she earned $2000 in her first month, and now she streams regularly, constantly improving with our support.",
