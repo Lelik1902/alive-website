@@ -366,6 +366,11 @@
     color:var(--text-1);font-size:0.95rem;
   }
   .fit-note strong{color:var(--text-0);}
+  .journey-photo{
+    border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);
+    margin-bottom:20px;aspect-ratio:4/3;
+  }
+  .journey-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;}
 
   /* COMMUNITY cards */
   .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
@@ -382,6 +387,20 @@
   }
   .note-card h3{font-size:1.02rem;font-weight:600;margin-bottom:6px;}
   .note-card p{color:var(--text-1);font-size:0.92rem;}
+  .results-panel{
+    margin-top:24px;padding:32px;border-radius:var(--radius);
+    border:1px solid var(--line);background:var(--bg-1);
+  }
+  .results-stat{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:24px;}
+  .results-value{
+    font-family:'Unbounded',sans-serif;font-size:2.4rem;font-weight:800;
+    background:linear-gradient(95deg,var(--cyan),var(--magenta));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .results-label{color:var(--text-1);font-size:0.98rem;max-width:360px;}
+  .results-gallery{display:grid;grid-template-columns:1.3fr 1fr;gap:16px;}
+  .results-gallery img{width:100%;border-radius:12px;border:1px solid var(--line);display:block;}
+  .results-caption{margin-top:16px;color:var(--text-1);font-size:0.85rem;}
 
   /* CASES */
   .cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
@@ -540,6 +559,7 @@
     .manifesto-grid,.fit-grid{grid-template-columns:1fr;gap:28px;}
     .about-visual{width:100%;max-width:420px;margin:0 auto;}
     .cards-grid{grid-template-columns:1fr;}
+    .results-gallery{grid-template-columns:1fr;}
     .cases-grid{
       display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;
       gap:16px;margin:0 -24px;padding:4px 8% 8px;scroll-padding-inline:8%;
@@ -731,6 +751,9 @@
           <li><span class="num">03</span><span data-i18n="fit_3">Ти відкрита до зворотного зв’язку, навчання та спілкування з аудиторією.</span></li>
         </ul>
         <div>
+          <div class="journey-photo">
+            <img src="assets/setup-photo.jpg" alt="Підготовка до ефіру" loading="lazy">
+          </div>
           <h3 style="font-size:1.1rem;font-weight:600;margin-bottom:8px;" data-i18n="journey_title">Від першого повідомлення — до першого впевненого ефіру</h3>
           <p style="color:var(--text-1);font-size:0.95rem;" data-i18n="journey_subtitle">П’ять кроків, які проходить кожна дівчина в команді.</p>
         </div>
@@ -790,6 +813,17 @@
           <h3 data-i18n="community_3_title">Можна побачити інакше</h3>
           <p data-i18n="community_3_text">Обмін підходами та досвідом усередині команди.</p>
         </div>
+      </div>
+      <div class="results-panel reveal">
+        <div class="results-stat">
+          <span class="results-value">$2000</span>
+          <span class="results-label" data-i18n="results_label">середній заробіток учасниць команди на місяць</span>
+        </div>
+        <div class="results-gallery">
+          <img src="assets/dashboard-1.png" alt="Статистика ефіру зсередини команди" loading="lazy">
+          <img src="assets/dashboard-2.png" alt="Джерела трафіку та подарунки за ефір" loading="lazy">
+        </div>
+        <p class="results-caption" data-i18n="results_caption">Реальна статистика одного з ефірів усередині команди ALive.</p>
       </div>
     </div>
   </section>
@@ -1019,6 +1053,8 @@
       community_2_text: "Зворотний зв’язок після ефіру.",
       community_3_title: "Можна побачити інакше",
       community_3_text: "Обмін підходами та досвідом усередині команди.",
+      results_label: "середній заробіток учасниць команди на місяць",
+      results_caption: "Реальна статистика одного з ефірів усередині команди ALive.",
       cases_eyebrow: "КЕЙСИ",
       cases_title: "Приклади шляху всередині ALive",
       cases_intro: "Три формати, які виросли з нуля разом із командою. Імена та деталі — додаються під реальні кейси.",
@@ -1122,6 +1158,8 @@
       community_2_text: "Feedback after the stream.",
       community_3_title: "You can see it differently",
       community_3_text: "Exchanging approaches and experience within the team.",
+      results_label: "average monthly earnings of a team member",
+      results_caption: "Real stats from one of the streams inside the ALive team.",
       cases_eyebrow: "CASES",
       cases_title: "Examples of the journey inside ALive",
       cases_intro: "Three formats that grew from zero together with the team. Names and details will be added once real cases are ready.",
